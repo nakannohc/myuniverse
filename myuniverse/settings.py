@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'places',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'myuniverse.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,10 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'myuniverse',
-	'USER': 'chonnakan',
-	'PASSWORD' : 'Ztutol2qw',
-	'HOST': 'localhost',
-	'PORT' : '',
+        'USER': 'chonnakan',
+        'PASSWORD' : 'Ztutol2qw',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
