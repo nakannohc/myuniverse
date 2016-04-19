@@ -29,20 +29,25 @@ def radar_search(lat, lng, place_type, radius):
 
 
 def index(request):
-    places = radar_search('13.744606', '100.536181', 'convenience_store', '5000')
-    #print len(places)
-    for place in places:
-        place_detail = get_detail(place['place_id'])
-        pp = Place.objects.filter(lat=place_detail['geometry']['location']['lat'],
-                                  lng=place_detail['geometry']['location']['lng'])
-        if pp.count() == 0:
-            p = Place(name=place_detail['name'],
-                      place_type='convenience_store',
-                      lat=place_detail['geometry']['location']['lat'],
-                      lng=place_detail['geometry']['location']['lng'])
-            p.save()
+    grids = Grid.objects.filter(scanned=False)
+    for g in grids:
+        places = radar_search(str(g.lat), str(g.lng), g.place_type, '5000')
+        #print len(places)
+        for place in places:
+            place_detail = get_detail(place['place_id'])
+            pp = Place.objects.filter(lat=place_detail['geometry']['location']['lat'],
+                                      lng=place_detail['geometry']['location']['lng'])
+            if pp.count() == 0:
+                p = Place(name=place_detail['name'],
+                          place_type='convenience_store',
+                          lat=place_detail['geometry']['location']['lat'],
+                          lng=place_detail['geometry']['location']['lng'])
+                p.save()
         #print '%s %f %f' % (place_detail['name'], place_detail['geometry']['location']['lat'], place_detail['geometry']['location']['lng'])
         #time.sleep(0.1)
+        print g.id
+        g.scanned = True
+        g.save()
     return HttpResponse("Hello, world. You're at the polls index.")
 
 
