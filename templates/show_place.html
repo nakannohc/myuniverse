@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script type="text/javascript">
+
+var map;
+var positions = [
+
+    {% for g in grids %}
+        {lat: {{ g.lat }} , lng: {{ g.lng }}},
+    {% endfor %}
+];
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 19.687503, lng: 100.198082},
+    zoom: 8
+  });
+  addMarker(map);
+}
+
+// Adds a marker to the map.
+var marker = [];
+var infowindow = [];
+function addMarker(map) {
+  // Add the marker at the clicked location, and add the next-available label
+  // from the array of alphabetical characters.
+  for(var i=0;i<positions.length;i++)
+  {
+      marker[i] = new google.maps.Circle({
+			strokeColor: '#FF0000',
+      		strokeOpacity: 0.8,
+      		strokeWeight: 2,
+      		fillColor: '#FF0000',
+      		fillOpacity: 0.35,
+      		map: map,
+      		center: positions[i],
+      		radius: 5000
+    	});
+  }
+}
+
+
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9RDsFBy2tE2PXnx9ecqCxN7mBXMsuHCE&callback=initMap">
+    </script>
+  </body>
+</html>
