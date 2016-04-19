@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 import json
 import time
@@ -12,8 +13,11 @@ def get_detail(place_id):
     url = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + place_id + '&key=' + key
     req = requests.get(url)
     res = json.loads(req.content)
+    #print res['status']
     if res['status'] == 'OK':
         return res['result']
+    elif res['status'] == 'ZERO_RESULTS':
+        return []
     else:
         return False
 
@@ -24,7 +28,10 @@ def radar_search(lat, lng, place_type, radius):
     res = json.loads(req.content)
     if res['status'] == 'OK':
         return res['results']
+    elif res['status'] == 'ZERO_RESULTS':
+        return []
     else:
+        #print res['status']
         return False
 
 
@@ -48,7 +55,7 @@ def index(request):
         print g.id
         g.scanned = True
         g.save()
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return HttpResponse("Complete")
 
 
 def gen_grid(request):
@@ -67,3 +74,10 @@ def gen_grid(request):
 def show_grid(request):
     grids = Grid.objects.all()
     return render(request, 'show_grid.html', {"grids": grids})
+
+
+def show_place(request):
+    places1 = Place.objects.filter(name__icontains=u'7')
+    places2 = Place.objects.filter(name__icontains=u'เซ')
+    places = places1 | places2
+    return render(request, 'show_place.html', {"places": places})

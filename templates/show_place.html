@@ -13,8 +13,8 @@
 var map;
 var positions = [
 
-    {% for g in grids %}
-        {lat: {{ g.lat }} , lng: {{ g.lng }}},
+    {% for p in places %}
+        {lat: {{ p.lat }} , lng: {{ p.lng }}},
     {% endfor %}
 ];
 
@@ -42,7 +42,7 @@ function addMarker(map) {
       		fillOpacity: 0.35,
       		map: map,
       		center: positions[i],
-      		radius: 5000
+      		radius: 50
     	});
   }
 }
