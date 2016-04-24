@@ -11,7 +11,7 @@ class Command(BaseCommand):
         print 'ddd'
         for g in grids:
             print g.id,
-            places = radar_search(str(g.lat), str(g.lng), g.place_type, '5000')
+            places = radar_search(str(g.lat), str(g.lng), g.place_type, '3000')
             #print places
             #print len(places)
             for place in places:
@@ -22,7 +22,8 @@ class Command(BaseCommand):
                     p = Place(name=place_detail['name'],
                               place_type='convenience_store',
                               lat=place_detail['geometry']['location']['lat'],
-                              lng=place_detail['geometry']['location']['lng'])
+                              lng=place_detail['geometry']['location']['lng'],
+                              address=place_detail['formatted_address'])
                     p.save()
             #print '%s %f %f' % (place_detail['name'], place_detail['geometry']['location']['lat'], place_detail['geometry']['location']['lng'])
             #time.sleep(0.1)
