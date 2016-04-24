@@ -9,6 +9,7 @@ class Place(models.Model):
     place_type = models.CharField(max_length=50)
     lat = models.FloatField()
     lng = models.FloatField()
+    address = models.TextField()
 
 
 class Grid(models.Model):
