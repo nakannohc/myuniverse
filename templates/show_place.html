@@ -14,14 +14,14 @@ var map;
 var positions = [
 
     {% for p in places %}
-        {lat: {{ p.lat }} , lng: {{ p.lng }}},
+        { lat: {{ p.lat }}, lng: {{ p.lng }} },
     {% endfor %}
 ];
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 13.733309, lng: 100.534121},
-    zoom: 8
+    center: {lat: 13.762572, lng: 100.565094},
+    zoom: 15
   });
   addMarker(map);
 }
@@ -42,7 +42,7 @@ function addMarker(map) {
       		fillOpacity: 0.35,
       		map: map,
       		center: positions[i],
-      		radius: 50
+      		radius: 25
     	});
   }
 }

@@ -19,4 +19,6 @@ class Grid(models.Model):
     place_type = models.CharField(max_length=50)
     lat = models.FloatField()
     lng = models.FloatField()
+    x = models.IntegerField()
+    y = models.IntegerField()
     scanned = models.BooleanField(default=False)

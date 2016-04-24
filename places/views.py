@@ -36,38 +36,43 @@ def radar_search(lat, lng, place_type, radius):
 
 
 def index(request):
-    grids = Grid.objects.filter(scanned=False)
-    for g in grids:
-        places = radar_search(str(g.lat), str(g.lng), g.place_type, '5000')
-        #print len(places)
-        for place in places:
-            place_detail = get_detail(place['place_id'])
-            pp = Place.objects.filter(lat=place_detail['geometry']['location']['lat'],
-                                      lng=place_detail['geometry']['location']['lng'])
-            if pp.count() == 0:
-                p = Place(name=place_detail['name'],
-                          place_type='convenience_store',
-                          lat=place_detail['geometry']['location']['lat'],
-                          lng=place_detail['geometry']['location']['lng'])
-                p.save()
-        #print '%s %f %f' % (place_detail['name'], place_detail['geometry']['location']['lat'], place_detail['geometry']['location']['lng'])
-        #time.sleep(0.1)
-        print g.id
-        g.scanned = True
-        g.save()
-    return HttpResponse("Complete")
+    not_scan = len(Grid.objects.filter(scanned=False))
+    scan = len(Grid.objects.filter(scanned=True))
+
+    return HttpResponse("scanned: %d </br>not scan: %d <br>total: %d" % (scan, not_scan, scan+not_scan))
+
+
+def put_mark(lat, lng, m, n, name, place_type):
+    count = 0
+    for i in range(0, m):
+        for j in range(0, n):
+            g = Grid(name='%s %s %d, %d' % (name, place_type, j, i),
+                     lat=lat - j*0.034,
+                     lng=lng + i*0.053+(j%2)*0.028,
+                     place_type=place_type,
+                     x=i,
+                     y=j)
+            g.save()
+            print '.',
+        count += 1
+    return count
 
 
 def gen_grid(request):
-    for i in range(0, 49):
-        for j in range(0, 10):
-            plng = i*0.094
-            plat = j*0.090
-            g = Grid(name='',
-                     lat=13.45+plat,
-                     lng=98.6+plng,
-                     place_type='convenience_store')
-            g.save()
+    put_mark(20.48, 99.0, 30, 20, 'north', 'convenience_store')
+    put_mark(19.8, 97.26, 78, 70, 'north', 'convenience_store')
+    put_mark(17.42, 98.1, 62, 92, 'central', 'convenience_store')
+    put_mark(14.292, 98.577, 86, 26, 'central', 'convenience_store')
+    put_mark(18.44, 101.394, 70, 70, 'northeast', 'convenience_store')
+    put_mark(16.06, 101.394, 79, 52, 'northeast', 'convenience_store')
+    put_mark(13.406, 100.432, 43, 27, 'east', 'convenience_store')
+    put_mark(12.49, 101.997, 19, 30, 'east', 'convenience_store')
+    put_mark(12.49, 101.997, 19, 30, 'east', 'convenience_store')
+    put_mark(13.408, 99.107, 20, 50, 'south', 'convenience_store')
+    put_mark(11.708, 99.107, 15, 22, 'south', 'convenience_store')
+    put_mark(10.96, 98.206, 43, 100, 'south', 'convenience_store')
+    put_mark(7.56, 99.001, 54, 33, 'south', 'convenience_store')
+    put_mark(6.438, 100.778, 26, 26, 'south', 'convenience_store')
     return HttpResponse("success")
 
 
