@@ -7,7 +7,9 @@ class Command(BaseCommand):
     help = 'Gen grids'
 
     def handle(self, *args, **options):
-        #count = 0;
+        g = Grid.objects.all()
+        g.delete()
+
         put_mark(20.48, 99.0, 30, 20, 'north', 'convenience_store')
         put_mark(19.8, 97.26, 78, 70, 'north', 'convenience_store')
         put_mark(17.42, 98.1, 62, 92, 'central', 'convenience_store')

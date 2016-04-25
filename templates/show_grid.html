@@ -34,16 +34,31 @@ function addMarker(map) {
   // from the array of alphabetical characters.
   for(var i=0;i<positions.length;i++)
   {
+      if (i%2 == 0) {
       marker[i] = new google.maps.Circle({
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35,
+          map: map,
+          center: positions[i],
+          radius: 3000
+      });
+    }
+      else{
+          marker[i] = new google.maps.Circle({
 			strokeColor: '#FF0000',
       		strokeOpacity: 0.8,
       		strokeWeight: 2,
-      		fillColor: '#FF0000',
+      		fillColor: '#0000FF',
       		fillOpacity: 0.35,
       		map: map,
       		center: positions[i],
-      		radius: 5000
+      		radius: 3000
     	});
+      }
+
   }
 }
 
