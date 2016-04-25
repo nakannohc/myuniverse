@@ -23,7 +23,8 @@ class Command(BaseCommand):
                               place_type='convenience_store',
                               lat=place_detail['geometry']['location']['lat'],
                               lng=place_detail['geometry']['location']['lng'],
-                              address=place_detail['formatted_address'])
+                              address=place_detail['formatted_address'],
+                              grid=g)
                     p.save()
             #print '%s %f %f' % (place_detail['name'], place_detail['geometry']['location']['lat'], place_detail['geometry']['location']['lng'])
             #time.sleep(0.1)
