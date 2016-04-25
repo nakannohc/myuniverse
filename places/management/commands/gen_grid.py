@@ -7,12 +7,9 @@ class Command(BaseCommand):
     help = 'Gen grids'
 
     def handle(self, *args, **options):
-	    place_type = 'text_srisawas'
-	    
+	    place_type = 'text_srisawas'    	    
         g = Grid.objects.filter(place_type=place_type)
         g.delete()
-        
-
         put_mark(20.48, 99.0, 30, 20, 'north', place_type)
         put_mark(19.8, 97.26, 78, 70, 'north', place_type)
         put_mark(17.42, 98.1, 62, 92, 'central', place_type)
