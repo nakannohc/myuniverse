@@ -42,16 +42,17 @@ def index(request):
     return HttpResponse("scanned: %d </br>not scan: %d <br>total: %d" % (scan, not_scan, scan+not_scan))
 
 
-def put_mark(lat, lng, m, n, name, place_type):
+def put_mark(lat, lng, m, n, zone, place_type):
     count = 0
     for i in range(0, m):
         for j in range(0, n):
-            g = Grid(name='%s %s %d, %d' % (name, place_type, j, i),
+            g = Grid(name='%s %s %d, %d' % (zone, place_type, j, i),
                      lat=lat - j*0.034,
                      lng=lng + i*0.053+(j%2)*0.028,
                      place_type=place_type,
                      x=i,
-                     y=j)
+                     y=j,
+                     zone=zone)
             g.save()
             print '.',
         count += 1

@@ -7,6 +7,7 @@ class Grid(models.Model):
 
     name = models.CharField(max_length=250)
     place_type = models.CharField(max_length=50)
+    zone = models.CharField(max_length=50)
     lat = models.FloatField()
     lng = models.FloatField()
     x = models.IntegerField()
