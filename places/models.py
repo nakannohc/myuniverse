@@ -23,4 +23,5 @@ class Place(models.Model):
     lat = models.FloatField()
     lng = models.FloatField()
     address = models.TextField()
+    grid = models.ForeignKey(Grid, blank=True, null=True)
 
