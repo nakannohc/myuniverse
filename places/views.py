@@ -103,6 +103,6 @@ def show_grid(request):
 
 def show_place(request):
     places1 = Place.objects.filter(name__icontains=u'7')
-    places2 = Place.objects.filter(name__icontains=u'เซ')
+    places2 = Place.objects.filter(name__icontains=u'เซเ')
     places = places1 | places2
     return render(request, 'show_place.html', {"places": places})
