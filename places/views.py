@@ -54,7 +54,7 @@ def put_mark(lat, lng, m, n, zone, place_type):
                      y=j,
                      zone=zone)
             g.save()
-            print '.',
+            #print '.',
         count += 1
     return count
 

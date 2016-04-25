@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a40192c1-9af0-460c-82d0-a994a9853ffa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/places/models.py" afterPath="$PROJECT_DIR$/places/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/places/management/commands/gen_grid.py" afterPath="$PROJECT_DIR$/places/management/commands/gen_grid.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/places/views.py" afterPath="$PROJECT_DIR$/places/views.py" />
     </list>
     <ignored path="myuniverse.iws" />
@@ -41,8 +41,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/places/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57081544">
-              <caret line="48" column="63" selection-start-line="48" selection-start-column="63" selection-end-line="48" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.48497853">
+              <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
               <folding>
                 <element signature="e#24#39#0" expanded="true" />
               </folding>
@@ -76,7 +76,7 @@
         <entry file="file://$PROJECT_DIR$/places/management/commands/gen_grid.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="53" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="53" />
+              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
               </folding>
@@ -107,10 +107,10 @@
         <option value="$PROJECT_DIR$/places/urls.py" />
         <option value="$PROJECT_DIR$/templates/show_grid.html" />
         <option value="$PROJECT_DIR$/templates/show_place.html" />
-        <option value="$PROJECT_DIR$/places/management/commands/gen_grid.py" />
         <option value="$PROJECT_DIR$/places/migrations/0006_auto_20160425_0619.py" />
         <option value="$PROJECT_DIR$/places/management/commands/get_places.py" />
         <option value="$PROJECT_DIR$/places/models.py" />
+        <option value="$PROJECT_DIR$/places/management/commands/gen_grid.py" />
         <option value="$PROJECT_DIR$/places/views.py" />
       </list>
     </option>
@@ -870,7 +870,7 @@
     <entry file="file://$PROJECT_DIR$/places/management/commands/gen_grid.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="53" />
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
           </folding>
@@ -879,8 +879,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/places/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57081544">
-          <caret line="48" column="63" selection-start-line="48" selection-start-column="63" selection-end-line="48" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.48497853">
+          <caret line="56" column="13" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
           <folding>
             <element signature="e#24#39#0" expanded="true" />
           </folding>

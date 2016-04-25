@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = 'Gen grids'
 
     def handle(self, *args, **options):
-        count = 0;
+        #count = 0;
         count += put_mark(20.48, 99.0, 30, 20, 'north', 'convenience_store')
         count += put_mark(19.8, 97.26, 78, 70, 'north', 'convenience_store')
         count += put_mark(17.42, 98.1, 62, 92, 'central', 'convenience_store')
@@ -22,4 +22,4 @@ class Command(BaseCommand):
         count += put_mark(10.96, 98.206, 43, 100, 'south', 'convenience_store')
         count += put_mark(7.56, 99.001, 54, 33, 'south', 'convenience_store')
         count += put_mark(6.438, 100.778, 26, 26, 'south', 'convenience_store')
-        print count
+        #print count
