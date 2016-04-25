@@ -36,13 +36,47 @@ def radar_search(lat, lng, place_type, radius):
         return False
 
 
-def text_search(lat, lng, radius, query):
+def text_search(lat, lng, query):
     url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?radius=' 
     url = url + lat + ',' + lng + '&query=' + query + '&key=' + key
     req = requests.get(url)
     res = json.loads(req.content)
+    list = []
+    #print url
     if res['status'] == 'OK':
-        return res['results']
+        list += res['results']
+        while 'next_page_token' in res:
+            url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?radius='
+            url = url + lat + ',' + lng + '&query=' + query + '&key=' + key + 'pagetoken=' + res['next_page_token']
+            req = requests.get(url)
+            res = json.loads(req.content)
+            if res['status'] == 'OK':
+                list += res['results']
+        return list
+    elif res['status'] == 'ZERO_RESULTS':
+        return []
+    else:
+        #print res['status']
+        return False
+
+
+def nearby_search(lat, lng, radius, name):
+    url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
+    url = url + lat + ',' + lng + '&name=' + name + '&radius=' + radius + '&key=' + key
+    req = requests.get(url)
+    res = json.loads(req.content)
+    list = []
+    #print url
+    if res['status'] == 'OK':
+        list += res['results']
+        while 'next_page_token' in res:
+            url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?radius='
+            url = url + lat + ',' + lng + '&query=' + query + '&key=' + key + 'pagetoken=' + res['next_page_token']
+            req = requests.get(url)
+            res = json.loads(req.content)
+            if res['status'] == 'OK':
+                list += res['results']
+        return list
     elif res['status'] == 'ZERO_RESULTS':
         return []
     else:

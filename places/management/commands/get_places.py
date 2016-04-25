@@ -2,7 +2,7 @@
 
 from django.core.management.base import BaseCommand, CommandError
 from places.models import Place, Grid
-from places.views import get_detail, radar_search, text_search
+from places.views import get_detail, radar_search, text_search, nearby_search
 
 
 class Command(BaseCommand):
@@ -39,14 +39,15 @@ class Command(BaseCommand):
         '''
         for g in grids:
             #print g.id,
-            places = text_search(str(g.lat), str(g.lng), '3000', u'ศรีสวัสดิ์')
+            places = nearby_search(str(g.lat), str(g.lng), '3000',  u'ศรีสวัสดิ์')
             #print places
             #print len(places)
             for place in places:
                 #place_detail = get_detail(place['place_id'])
                 place_detail = place
                 pp = Place.objects.filter(lat=place_detail['geometry']['location']['lat'],
-                                          lng=place_detail['geometry']['location']['lng'])
+                                          lng=place_detail['geometry']['location']['lng'],
+                                          place_type='text_srisawas')
                 if pp.count() == 0:
                     p = Place(name=place_detail['name'],
                               place_type='text_srisawas',
@@ -55,5 +56,8 @@ class Command(BaseCommand):
                               address=place_detail['formatted_address'],
                               grid=g)
                     p.save()
+                break
+            break
             g.scanned = True
             g.save()
+
