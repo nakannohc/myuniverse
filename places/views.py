@@ -23,7 +23,8 @@ def get_detail(place_id):
 
 
 def radar_search(lat, lng, place_type, radius):
-    url = 'https://maps.googleapis.com/maps/api/place/radarsearch/json?location=' + lat + ',' + lng + '&radius=' + radius +'&type=' + place_type + '&key=' + key
+    url = 'https://maps.googleapis.com/maps/api/place/radarsearch/json?location=' 
+    url = url + lat + ',' + lng + '&radius=' + radius +'&type=' + place_type + '&key=' + key
     req = requests.get(url)
     res = json.loads(req.content)
     if res['status'] == 'OK':
@@ -34,6 +35,20 @@ def radar_search(lat, lng, place_type, radius):
         #print res['status']
         return False
 
+
+def text_search(lat, lng, radius, query):
+    url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?radius=' 
+    url = url + lat + ',' + lng + '&query=' + query +'&type=' + place_type + '&key=' + key
+    req = requests.get(url)
+    res = json.loads(req.content)
+    if res['status'] == 'OK':
+        return res['results']
+    elif res['status'] == 'ZERO_RESULTS':
+        return []
+    else:
+        #print res['status']
+        return False
+        
 
 def index(request):
     not_scan = len(Grid.objects.filter(scanned=False))
