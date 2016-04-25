@@ -55,3 +55,5 @@ class Command(BaseCommand):
                               address=place_detail['formatted_address'],
                               grid=g)
                     p.save()
+            g.scanned = True
+            g.save()
