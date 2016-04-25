@@ -8,9 +8,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         grids = Grid.objects.filter(scanned=False)
-        print 'ddd'
+        #print 'ddd'
         for g in grids:
-            print g.id,
+            #print g.id,
             places = radar_search(str(g.lat), str(g.lng), g.place_type, '3000')
             #print places
             #print len(places)
@@ -28,7 +28,7 @@ class Command(BaseCommand):
                     p.save()
             #print '%s %f %f' % (place_detail['name'], place_detail['geometry']['location']['lat'], place_detail['geometry']['location']['lng'])
             #time.sleep(0.1)
-                print '.',
-            print '.'
+                #print '.',
+            #print '.'
             g.scanned = True
             g.save()
