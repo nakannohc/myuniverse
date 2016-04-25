@@ -79,7 +79,7 @@ def gen_grid(request):
 
 def show_grid(request):
     zone = request.GET.get('zone')
-    grids = Grid.objects.all(zone=zone)
+    grids = Grid.objects.filter(zone=zone)
     return render(request, 'show_grid.html', {"grids": grids})
 
 
