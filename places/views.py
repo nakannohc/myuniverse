@@ -38,7 +38,7 @@ def radar_search(lat, lng, place_type, radius):
 
 def text_search(lat, lng, radius, query):
     url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?radius=' 
-    url = url + lat + ',' + lng + '&query=' + query +'&type=' + place_type + '&key=' + key
+    url = url + lat + ',' + lng + '&query=' + query + '&key=' + key
     req = requests.get(url)
     res = json.loads(req.content)
     if res['status'] == 'OK':
