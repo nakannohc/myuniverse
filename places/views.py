@@ -177,18 +177,19 @@ def export_excel(request):
     #
     ws = wb.add_sheet("sheet1")
     #ws.write(0, 0, "something")
-    ws.write(0, 0, 'name')
-    ws.write(0, 1, 'lat')
-    ws.write(0, 2, 'lng')
-    ws.write(0, 3, 'address')
-    ws.write(0, 4, 'grid')
+    ws.write(0, 1, 'name')
+    ws.write(0, 2, 'lat')
+    ws.write(0, 3, 'lng')
+    ws.write(0, 4, 'address')
+    ws.write(0, 5, 'grid')
     row = 1
     for place in places:
-        ws.write(row, 0, place.name)
-        ws.write(row, 1, place.lat)
-        ws.write(row, 2, place.lng)
-        ws.write(row, 3, place.address)
-        ws.write(row, 4, "%s (%f, %f)" % (place.grid.name, place.grid.lat, place.grid.lng))
+        ws.write(row, 0, row)
+        ws.write(row, 1, place.name)
+        ws.write(row, 2, place.lat)
+        ws.write(row, 3, place.lng)
+        ws.write(row, 4, place.address)
+        ws.write(row, 5, "%s (%f, %f)" % (place.grid.name, place.grid.lat, place.grid.lng))
         row += 1
 
     response = HttpResponse()
