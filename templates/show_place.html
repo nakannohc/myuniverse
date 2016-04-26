@@ -17,7 +17,12 @@ var positions = [
         { lat: {{ p.lat }}, lng: {{ p.lng }} },
     {% endfor %}
 ];
+var titles = [
 
+    {% for p in places %}
+        "{{ p.name }}" ,
+    {% endfor %}
+];
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 13.762572, lng: 100.565094},
@@ -28,12 +33,15 @@ function initMap() {
 
 // Adds a marker to the map.
 var marker = [];
+var label = [];
 var infowindow = [];
 function addMarker(map) {
   // Add the marker at the clicked location, and add the next-available label
   // from the array of alphabetical characters.
+
   for(var i=0;i<positions.length;i++)
   {
+      /*
       marker[i] = new google.maps.Circle({
 			strokeColor: '#FF0000',
       		strokeOpacity: 0.8,
@@ -42,10 +50,20 @@ function addMarker(map) {
       		fillOpacity: 0.35,
       		map: map,
       		center: positions[i],
-      		radius: 25
-    	});
+      		radius: 25,
+          label: 'a'
+      });*/
+      marker[i] = new google.maps.Marker({
+        position: positions[i],
+        map: map,
+        title: titles[i]
+    });
   }
 }
+
+
+
+
 
 
     </script>
