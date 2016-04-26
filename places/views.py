@@ -136,7 +136,18 @@ def show_grid(request):
 
 
 def show_place(request):
-    places1 = Place.objects.filter(name__icontains=u'7')
-    places2 = Place.objects.filter(name__icontains=u'เซเ')
-    places = places1 | places2
+    name = request.GET.get('name')
+    if name == '7eleven':
+        places1 = Place.objects.filter(name__icontains=u'7', place_type='convenience_store')
+        places2 = Place.objects.filter(name__icontains=u'เซเ', place_type='convenience_store')
+        places = places1 | places2
+    elif name == 'srisawas':
+        places1 = Place.objects.filter(name__icontains=u'เงิน', place_type='text_srisawas')
+        places2 = Place.objects.filter(name__icontains=u'leas', place_type='text_srisawas')
+        places3 = Place.objects.filter(name__icontains=u'ลิสซ', place_type='text_srisawas')
+        places4 = Place.objects.filter(name__icontains=u'ลีสซ', place_type='text_srisawas')
+        places = places1 | places2 | places3 | places4
+    else:
+        places = None
+
     return render(request, 'show_place.html', {"places": places})
