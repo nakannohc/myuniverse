@@ -12,7 +12,7 @@ class Command(BaseCommand):
         grids = Grid.objects.filter(scanned=False)
         #print 'ddd'
         
-        '''
+        
         for g in grids:
             #print g.id,
             places = radar_search(str(g.lat), str(g.lng), g.place_type, '3000')
@@ -37,6 +37,7 @@ class Command(BaseCommand):
             g.scanned = True
             g.save()
         '''
+
         for g in grids:
             #print g.id,
             places = nearby_search(str(g.lat), str(g.lng), '3000',  u'ศรีสวัสดิ์')
@@ -59,4 +60,4 @@ class Command(BaseCommand):
                     p.save()
             g.scanned = True
             g.save()
-
+        '''
