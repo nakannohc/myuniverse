@@ -43,11 +43,12 @@ class Command(BaseCommand):
             #print places
             #print len(places)
             for place in places:
-                #place_detail = get_detail(place['place_id'])
-                place_detail = place
+                place_detail = get_detail(place['place_id'])
+
                 pp = Place.objects.filter(lat=place_detail['geometry']['location']['lat'],
                                           lng=place_detail['geometry']['location']['lng'],
                                           place_type='text_srisawas')
+                #print place_detail
                 if pp.count() == 0:
                     p = Place(name=place_detail['name'],
                               place_type='text_srisawas',
@@ -56,8 +57,6 @@ class Command(BaseCommand):
                               address=place_detail['formatted_address'],
                               grid=g)
                     p.save()
-                break
-            break
             g.scanned = True
             g.save()
 
