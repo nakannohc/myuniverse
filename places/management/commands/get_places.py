@@ -11,7 +11,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         grids = Grid.objects.filter(scanned=False)
         #print 'ddd'
-        
+        place_type = ''
         '''
         for g in grids:
             #print g.id,
@@ -24,7 +24,7 @@ class Command(BaseCommand):
                                           lng=place_detail['geometry']['location']['lng'])
                 if pp.count() == 0:
                     p = Place(name=place_detail['name'],
-                              place_type='text_srisawas',
+                              place_type=place_type',
                               lat=place_detail['geometry']['location']['lat'],
                               lng=place_detail['geometry']['location']['lng'],
                               address=place_detail['formatted_address'],
@@ -52,7 +52,7 @@ class Command(BaseCommand):
                 #print place_detail
                 if pp.count() == 0:
                     p = Place(name=place_detail['name'],
-                              place_type='text_srisawas',
+                              place_type=place_type,
                               lat=place_detail['geometry']['location']['lat'],
                               lng=place_detail['geometry']['location']['lng'],
                               address=place_detail['formatted_address'],

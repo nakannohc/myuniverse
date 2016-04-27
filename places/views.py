@@ -119,11 +119,13 @@ def show_grid(request):
 
 def list_place(name):
     if name == '7eleven':
-        places1 = Place.objects.filter(name__icontains=u'7', place_type='convenience_store')
-        places2 = Place.objects.filter(name__icontains=u'เซเ', place_type='convenience_store')
-        places3 = Place.objects.filter(name__icontains='7', place_type='shopping_mall')
-        places4 = Place.objects.filter(name__icontains='เซเ', place_type='shopping_mall')
-        places = places1 | places2 | places3 | places4
+        places1 = Place.objects.filter(name__icontains=u'7', name__icontains=u'eleven', place_type='convenience_store')
+        places2 = Place.objects.filter(name__icontains=u'7', name__icontains=u'11', place_type='convenience_store')
+        places3 = Place.objects.filter(name__icontains=u'เซเ', place_type='convenience_store')
+        places4 = Place.objects.filter(name__icontains='7', name__icontains=u'eleven' place_type='shopping_mall')
+        places5 = Place.objects.filter(name__icontains='7', name__icontains=u'11' place_type='shopping_mall')
+        places6 = Place.objects.filter(name__icontains='เซเ', place_type='shopping_mall')
+        places = places1 | places2 | places3 | places4 | places5 | places6
         dl_link = '/places/exportexcel/?name=' + name
     elif name == 'srisawas':
         places1 = Place.objects.filter(name__icontains=u'เงิน', place_type='text_srisawas')
