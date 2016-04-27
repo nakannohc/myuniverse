@@ -137,6 +137,7 @@ def list_place(name):
         dl_link = '/places/exportexcel/?name=' + name
     elif name == 'nb7eleven':
         places = Place.objects.filter(place_type='nearby_7eleven')
+        dl_link = 'nb7eleven'
     else:
         places = None
         dl_link = ''
