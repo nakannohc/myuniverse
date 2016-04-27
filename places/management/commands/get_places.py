@@ -11,7 +11,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         grids = Grid.objects.filter(scanned=False)
         #print 'ddd'
-        place_type = ''
+        place_type = 'nearby_7eleven'
         '''
         for g in grids:
             #print g.id,
@@ -40,7 +40,7 @@ class Command(BaseCommand):
 
         for g in grids:
             #print g.id,
-            places = nearby_search(str(g.lat), str(g.lng), '3000',  u'7-eleven')
+            places = nearby_search(str(g.lat), str(g.lng), '3000',  u'7 eleven')
             #print places
             #print len(places)
             for place in places:
@@ -48,7 +48,7 @@ class Command(BaseCommand):
 
                 pp = Place.objects.filter(lat=place_detail['geometry']['location']['lat'],
                                           lng=place_detail['geometry']['location']['lng'],
-                                          place_type='text_srisawas')
+                                          place_type=place_type)
                 #print place_detail
                 if pp.count() == 0:
                     p = Place(name=place_detail['name'],
