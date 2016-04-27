@@ -12,7 +12,7 @@ class Command(BaseCommand):
         grids = Grid.objects.filter(scanned=False)
         #print 'ddd'
         
-        
+
         for g in grids:
             #print g.id,
             places = radar_search(str(g.lat), str(g.lng), g.place_type, '3000')

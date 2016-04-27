@@ -108,24 +108,6 @@ def put_mark(lat, lng, m, n, zone, place_type):
     return count
 
 
-def gen_grid(request):
-    put_mark(20.48, 99.0, 30, 20, 'north', 'convenience_store')
-    put_mark(19.8, 97.26, 78, 70, 'north', 'convenience_store')
-    put_mark(17.42, 98.1, 62, 92, 'central', 'convenience_store')
-    put_mark(14.292, 98.577, 86, 26, 'central', 'convenience_store')
-    put_mark(18.44, 101.394, 70, 70, 'northeast', 'convenience_store')
-    put_mark(16.06, 101.394, 79, 52, 'northeast', 'convenience_store')
-    put_mark(13.406, 100.432, 43, 27, 'east', 'convenience_store')
-    put_mark(12.49, 101.997, 19, 30, 'east', 'convenience_store')
-    put_mark(12.49, 101.997, 19, 30, 'east', 'convenience_store')
-    put_mark(13.408, 99.107, 20, 50, 'south', 'convenience_store')
-    put_mark(11.708, 99.107, 15, 22, 'south', 'convenience_store')
-    put_mark(10.96, 98.206, 43, 100, 'south', 'convenience_store')
-    put_mark(7.56, 99.001, 54, 33, 'south', 'convenience_store')
-    put_mark(6.438, 100.778, 26, 26, 'south', 'convenience_store')
-    return HttpResponse("success")
-
-
 def show_grid(request):
     zone = request.GET.get('zone')
     if zone == 'all':
@@ -135,12 +117,13 @@ def show_grid(request):
     return render(request, 'show_grid.html', {"grids": grids})
 
 
-def report_place(request):
-    name = request.GET.get('name')
+def list_place(name):
     if name == '7eleven':
         places1 = Place.objects.filter(name__icontains=u'7', place_type='convenience_store')
         places2 = Place.objects.filter(name__icontains=u'เซเ', place_type='convenience_store')
-        places = places1 | places2
+        places3 = Place.objects.filter(name__icontainds='7', place_type='shopping_mall')
+        places4 = Place.objects.filter(name__icontainds='เซเ', place_type='shopping_mall')
+        places = places1 | places2 | places3 | places4
         dl_link = '/places/exportexcel/?name=' + name
     elif name == 'srisawas':
         places1 = Place.objects.filter(name__icontains=u'เงิน', place_type='text_srisawas')
@@ -152,24 +135,18 @@ def report_place(request):
     else:
         places = None
         dl_link = ''
+    return places, dl_link
 
+
+def report_place(request):
+    name = request.GET.get('name')
+    places, dl_link = list_place(name)
     return render(request, 'report_place.html', {"places": places, "dl_link": dl_link})
 
 
 def export_excel(request):
     name = request.GET.get('name')
-    if name == '7eleven':
-        places1 = Place.objects.filter(name__icontains=u'7', place_type='convenience_store')
-        places2 = Place.objects.filter(name__icontains=u'เซเ', place_type='convenience_store')
-        places = places1 | places2
-    elif name == 'srisawas':
-        places1 = Place.objects.filter(name__icontains=u'เงิน', place_type='text_srisawas')
-        places2 = Place.objects.filter(name__icontains=u'leas', place_type='text_srisawas')
-        places3 = Place.objects.filter(name__icontains=u'ลิสซ', place_type='text_srisawas')
-        places4 = Place.objects.filter(name__icontains=u'ลีสซ', place_type='text_srisawas')
-        places = places1 | places2 | places3 | places4
-    else:
-        places = None
+    places, dl_link = list_place(name)
 
     wb = xlwt.Workbook()
 
@@ -199,17 +176,6 @@ def export_excel(request):
 
 def show_place(request):
     name = request.GET.get('name')
-    if name == '7eleven':
-        places1 = Place.objects.filter(name__icontains=u'7', place_type='convenience_store')
-        places2 = Place.objects.filter(name__icontains=u'เซเ', place_type='convenience_store')
-        places = places1 | places2
-    elif name == 'srisawas':
-        places1 = Place.objects.filter(name__icontains=u'เงิน', place_type='text_srisawas')
-        places2 = Place.objects.filter(name__icontains=u'leas', place_type='text_srisawas')
-        places3 = Place.objects.filter(name__icontains=u'ลิสซ', place_type='text_srisawas')
-        places4 = Place.objects.filter(name__icontains=u'ลีสซ', place_type='text_srisawas')
-        places = places1 | places2 | places3 | places4
-    else:
-        places = None
+    places, dl_link = list_place(name)
 
     return render(request, 'show_place.html', {"places": places})

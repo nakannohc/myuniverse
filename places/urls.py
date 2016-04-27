@@ -4,7 +4,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^gengrid/?$', views.gen_grid, name='gen_grid'),
     url(r'^showgrid/?$', views.show_grid, name='show_grid'),
     url(r'^showplace/?$', views.show_place, name='show_place'),
     url(r'^exportexcel/?$', views.export_excel, name='export_excel'),
