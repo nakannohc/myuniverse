@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import time
 from django.core.management.base import BaseCommand, CommandError
 from places.models import Place, Grid
 from places.views import get_detail, radar_search, text_search, nearby_search
@@ -58,6 +58,7 @@ class Command(BaseCommand):
                               address=place_detail['formatted_address'],
                               grid=g)
                     p.save()
+            time.sleep(0.1)
             g.scanned = True
             g.save()
 
