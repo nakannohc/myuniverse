@@ -86,8 +86,8 @@ def nearby_search(lat, lng, radius, name):
         
 
 def index(request):
-    not_scan = len(Grid.objects.filter(scanned=False))
-    scan = len(Grid.objects.filter(scanned=True))
+    not_scan = Grid.objects.filter(scanned=False).count()
+    scan = Grid.objects.filter(scanned=True).count()
 
     return HttpResponse("scanned: %d </br>not scan: %d <br>total: %d" % (scan, not_scan, scan+not_scan))
 
