@@ -135,6 +135,8 @@ def list_place(name):
         places4 = Place.objects.filter(name__icontains=u'ลีสซ', place_type='text_srisawas')
         places = places1 | places2 | places3 | places4
         dl_link = '/places/exportexcel/?name=' + name
+    elif name == 'nb7eleven':
+        places = Place.objects.filter(place_type='nearby_7eleven')
     else:
         places = None
         dl_link = ''
