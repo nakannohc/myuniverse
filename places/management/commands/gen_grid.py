@@ -7,7 +7,7 @@ class Command(BaseCommand):
     help = 'Gen grids'
 
     def handle(self, *args, **options):
-        place_type = 'shopping_mall'
+        place_type = 'nearby_7eleven'
         g = Grid.objects.filter(place_type=place_type)
         g.delete()
         put_mark(20.48, 99.0, 30, 20, 'north 1', place_type)
