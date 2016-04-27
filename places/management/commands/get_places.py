@@ -58,7 +58,7 @@ class Command(BaseCommand):
                               address=place_detail['formatted_address'],
                               grid=g)
                     p.save()
-            time.sleep(0.1)
+                time.sleep(0.1)
             g.scanned = True
             g.save()
 
