@@ -10,7 +10,7 @@ class Command(BaseCommand):
         count = 0
         wb = xlwt.Workbook()
         ws = wb.add_sheet("sheet1")
-        for i in range(1, 6):
+        for i in range(1, 11077):
             sid = '%.5d' % i
             url = 'http://202.80.233.91/arcgis/rest/services/7App/MapServer/0/query?where=STORECODE%3D' + sid + '&text=&objectIds=&time=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=OBJECTID%2CNAME%2C+LOCATION_T%2CSTORECODE%2CSTORENAME%2CZONE_CODE&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson'
             req = requests.get(url)
