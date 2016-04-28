@@ -185,3 +185,30 @@ def show_place(request):
     places, dl_link = list_place(name)
 
     return render(request, 'show_place.html', {"places": places})
+
+
+def app7_export(request):
+    name = '7appexport'
+    count = 0
+    wb = xlwt.Workbook()
+    ws = wb.add_sheet("sheet1")
+    for i in range(1, 6):
+        sid = '%.5d' % i
+        url = 'http://202.80.233.91/arcgis/rest/services/7App/MapServer/0/query?where=STORECODE%3D' + sid + '&text=&objectIds=&time=&geometry=&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=OBJECTID%2CNAME%2C+LOCATION_T%2CSTORECODE%2CSTORENAME%2CZONE_CODE&returnGeometry=true&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&f=pjson'
+        req = requests.get(url)
+        res = json.loads(req.content)
+        if len(res['features']) > 0:
+            ws.write(i, 0, res['features'][0]['attributes']['OBJECTID'])
+            ws.write(i, 1, res['features'][0]['attributes']['STORENAME'])
+            ws.write(i, 2, res['features'][0]['geometry']['x'])
+            ws.write(i, 3, res['features'][0]['geometry']['y'])
+            ws.write(i, 4, res['features'][0]['attributes']['STORECODE'])
+            ws.write(i, 5, res['features'][0]['attributes']['LOCATION_T'])
+            ws.write(i, 6, res['features'][0]['attributes']['Name'])
+            ws.write(i, 7, res['features'][0]['attributes']['ZONE_CODE'])
+            count += 1
+
+    response = HttpResponse()
+    response['Content-Disposition'] = 'attachment; filename=' + name + '.xls'
+    wb.save(response)
+    return response
