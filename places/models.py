@@ -12,6 +12,8 @@ class Grid(models.Model):
     lng = models.FloatField()
     x = models.IntegerField()
     y = models.IntegerField()
+    keyword = models.CharField(max_length=250)
+    count_place = models.IntegerField(default=0)
     scanned = models.BooleanField(default=False)
 
 
