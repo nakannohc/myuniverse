@@ -182,6 +182,7 @@ def export_excel(request):
     wb.save(response)
     return response
 
+
 def show_place(request):
     name = request.GET.get('name')
     places, dl_link = list_place(name)

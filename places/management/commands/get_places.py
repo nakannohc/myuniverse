@@ -38,7 +38,7 @@ class Command(BaseCommand):
                 g.save()
             '''
             for g in grids:
-                print g.keyword,
+                #print g.keyword,
                 places = nearby_search(str(g.lat), str(g.lng), '3000', g.keyword)
                 g.count_place = len(places)
                 #print places

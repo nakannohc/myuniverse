@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand, CommandError
 from places.models import Place, Grid
 from places.views import get_detail, radar_search, put_mark
