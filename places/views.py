@@ -92,7 +92,7 @@ def index(request):
     return HttpResponse("scanned: %d </br>not scan: %d <br>total: %d" % (scan, not_scan, scan+not_scan))
 
 
-def put_mark(lat, lng, m, n, zone, place_type):
+def put_mark(lat, lng, m, n, zone, place_type, keyword):
     count = 0
     for i in range(0, m):
         for j in range(0, n):
@@ -102,6 +102,8 @@ def put_mark(lat, lng, m, n, zone, place_type):
                      place_type=place_type,
                      x=i,
                      y=j,
+                     keyword=keyword,
+                     count_place=0,
                      zone=zone)
             g.save()
             #print '.',

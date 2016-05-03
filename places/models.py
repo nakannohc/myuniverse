@@ -22,7 +22,6 @@ class Place(models.Model):
         return self.name
 
     name = models.CharField(max_length=250)
-    place_type = models.CharField(max_length=50)
     lat = models.FloatField()
     lng = models.FloatField()
     address = models.TextField()
