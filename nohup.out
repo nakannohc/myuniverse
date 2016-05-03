@@ -186,3 +186,35 @@ Traceback (most recent call last):
   File "/usr/lib/python2.7/ssl.py", line 260, in read
     return self._sslobj.read(len)
 KeyboardInterrupt
+Traceback (most recent call last):
+  File "./manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 353, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 345, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 195, in fetch_command
+    klass = load_command_class(app_name, subcommand)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 39, in load_command_class
+    module = import_module('%s.management.commands.%s' % (app_name, name))
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/chonnakan/myuniverse/places/management/commands/gen_grid.py", line 4, in <module>
+    import xlrd
+ImportError: No module named xlrd
+Unknown command: 'getplaces'
+Type 'manage.py help' for usage.
+Traceback (most recent call last):
+  File "./manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 353, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 345, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/base.py", line 348, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/base.py", line 399, in execute
+    output = self.handle(*args, **options)
+  File "/home/chonnakan/myuniverse/places/management/commands/get_places.py", line 41, in handle
+    print g.keyword,
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-10: ordinal not in range(128)
