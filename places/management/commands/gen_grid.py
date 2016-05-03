@@ -11,6 +11,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         wb = xlrd.open_workbook('keywords.xlsx')
         ws = wb.sheet_by_index(0)
+
         for i in range(0, ws.nrows):
             kw = ws.cell_value(i, 0)
             pt = ws.cell_value(i, 1)
@@ -19,6 +20,13 @@ class Command(BaseCommand):
             keyword = kw
             g = Grid.objects.filter(place_type=place_type, keyword=keyword)
             g.delete()
+
+        for i in range(0, ws.nrows):
+            kw = ws.cell_value(i, 0)
+            pt = ws.cell_value(i, 1)
+
+            place_type = pt
+            keyword = kw
             put_mark(20.48, 99.0, 30, 20, 'north 1', place_type, keyword)
             put_mark(19.8, 97.26, 78, 70, 'north 2', place_type, keyword)
             put_mark(17.42, 98.1, 62, 92, 'central 1', place_type, keyword)
