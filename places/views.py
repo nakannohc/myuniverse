@@ -123,7 +123,11 @@ def index(request):
         d['link'] = ''
         list_keywords.append(d)
     print list_keywords
-    return render(request, 'searchreport.html', {"keywords": list_keywords,})
+    return render(request, 'searchreport.html',
+                  {"keywords": list_keywords,
+                   'allscan': scan,
+                   'allnotscan': not_scan,
+                   'all': scan + not_scan})
 
 
 def put_mark(lat, lng, m, n, zone, place_type, keyword):
