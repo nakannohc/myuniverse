@@ -122,7 +122,6 @@ def index(request):
         d['total'] = cm + ncm
         d['link'] = ''
         list_keywords.append(d)
-    print list_keywords
     return render(request, 'searchreport.html',
                   {"keywords": list_keywords,
                    'allscan': scan,
