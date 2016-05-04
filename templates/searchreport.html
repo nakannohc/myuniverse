@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>Keyword</td>
+        <td>Not complete grids</td>
+        <td>Complete grids</td>
+        <td>Total grids</td>
+        <td>Report download</td>
+    </tr>
+    {% for k in keywords %}
+        <tr>
+        <td>{{ k.keyword }}</td>
+        <td>{{ k.notcomplete }}</td>
+        <td>{{ k.complete }}</td>
+        <td>{{ k.total}}</td>
+        <td>{{ k.link }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
