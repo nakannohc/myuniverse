@@ -117,10 +117,10 @@ def index(request):
         d = {}
         d['keyword'] = keyword
         ncm = Grid.objects.filter(keyword=keyword, scanned=False).count()
-        cm = Grid.objects.filter(keyword=keyword, scanned=True).count()
+        #cm = Grid.objects.filter(keyword=keyword, scanned=True).count()
         d['notcomplete'] = ncm
-        d['complete'] = cm
-        d['total'] = cm + ncm
+        d['complete'] = 33397 - ncm
+        d['total'] = 33397
         d['link'] = '/places/exportexcel/?name=' + keyword
         list_keywords.append(d)
 
