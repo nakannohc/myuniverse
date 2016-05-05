@@ -12,7 +12,6 @@ class Command(BaseCommand):
         numrows = 5
         grids = Grid.objects.filter(scanned=False).order_by('keyword')[:numrows]
         count_api = 0
-        print count_api
         while grids.count() > 0:
             '''
             for g in grids:
@@ -44,7 +43,7 @@ class Command(BaseCommand):
                 places = nearby_search(str(g.lat), str(g.lng), '3000', g.keyword)
                 count_api += 1
                 g.count_place = len(places)
-                #print places
+                print places
                 #print len(places)
                 for place in places:
                     place_detail = get_detail(place['place_id'])
