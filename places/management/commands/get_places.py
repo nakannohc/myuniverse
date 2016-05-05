@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         numrows = 5
-        grids = Grid.objects.filter(scanned=False).order_by('keyword')[:numrows]
+        grids = Grid.objects.filter(scanned=False)[:numrows]
         count_api = 0
         while grids.count() > 0:
             '''
@@ -43,7 +43,7 @@ class Command(BaseCommand):
                 places = nearby_search(str(g.lat), str(g.lng), '3000', g.keyword)
                 count_api += 1
                 g.count_place = len(places)
-                print places
+                #print places
                 #print len(places)
                 for place in places:
                     place_detail = get_detail(place['place_id'])
@@ -61,7 +61,7 @@ class Command(BaseCommand):
 
                 g.scanned = True
                 g.save()
-            grids = Grid.objects.filter(scanned=False).order_by('keyword')[:numrows]
+            grids = Grid.objects.filter(scanned=False)[:numrows]
             if count_api > 149900:
                 print count_api
                 break
