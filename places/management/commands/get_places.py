@@ -12,6 +12,7 @@ class Command(BaseCommand):
         numrows = 5
         grids = Grid.objects.filter(scanned=False).order_by('keyword')[:numrows]
         count_api = 0
+        print count_api
         while grids.count() > 0:
             '''
             for g in grids:
