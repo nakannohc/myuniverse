@@ -4,6 +4,7 @@ import json
 import xlwt
 from django.db.models import Q
 from django.shortcuts import render, render_to_response
+from django.views.decorators.csrf import csrf_protect
 from django.http import HttpResponse
 from places.models import Place, Grid
 
@@ -116,20 +117,27 @@ def index(request):
     for keyword in keywords:
         d = {}
         d['keyword'] = keyword
-        ncm = Grid.objects.filter(keyword=keyword, scanned=False).count()
-        #cm = Grid.objects.filter(keyword=keyword, scanned=True).count()
-        d['notcomplete'] = ncm
-        d['complete'] = 33397 - ncm
-        d['total'] = 33397
         d['link'] = '/places/exportexcel/?name=' + keyword
         list_keywords.append(d)
-        break
 
     return render(request, 'searchreport.html',
                   {"keywords": list_keywords,
                    'allscan': scan,
                    'allnotscan': not_scan,
                    'all': scan + not_scan})
+
+@csrf_protect
+def grid_status(request):
+    k = request.POST.get('keyword')
+    d = {}
+    d['keyword'] = k
+    ncm = Grid.objects.filter(keyword=k, scanned=False).count()
+    cm = Grid.objects.filter(keyword=k, scanned=True).count()
+    d['notcomplete'] = ncm
+    d['complete'] = cm
+    d['total'] = ncm+cm
+    d['link'] = '/places/exportexcel/?name=' + k
+    return HttpResponse(json.dumps(d))
 
 
 def put_mark(lat, lng, m, n, zone, place_type, keyword):

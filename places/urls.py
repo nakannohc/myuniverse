@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^exportexcel/?$', views.export_excel, name='export_excel'),
     url(r'^reportplace/?$', views.report_place, name='report_place'),
     url(r'^app7export/?$', views.app7_export, name='app7_export'),
+    url(r'^gridstatus/?$', views.grid_status, name='grid_status'),
 ]
