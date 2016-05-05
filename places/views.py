@@ -137,6 +137,7 @@ def grid_status(request):
     d['complete'] = cm
     d['total'] = ncm+cm
     d['link'] = '/places/exportexcel/?name=' + k
+    #print d
     return HttpResponse(json.dumps(d))
 
 
