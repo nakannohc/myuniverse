@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         numrows = 5
-        grids = Grid.objects.filter(scanned=False)[:numrows]
+        grids = Grid.objects.filter(scanned=False).order_by('keyword')[:numrows]
         count_api = 0
         while grids.count() > 0:
             '''
