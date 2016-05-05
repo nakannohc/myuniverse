@@ -61,7 +61,7 @@ class Command(BaseCommand):
 
                 g.scanned = True
                 g.save()
-            grids = Grid.objects.filter(scanned=False)order_by('keyword')[:numrows]
+            grids = Grid.objects.filter(scanned=False).order_by('keyword')[:numrows]
             if count_api > 149900:
                 print count_api
                 break
