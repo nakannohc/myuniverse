@@ -123,6 +123,7 @@ def index(request):
         d['total'] = 33397
         d['link'] = '/places/exportexcel/?name=' + keyword
         list_keywords.append(d)
+        break
 
     return render(request, 'searchreport.html',
                   {"keywords": list_keywords,
