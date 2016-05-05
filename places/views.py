@@ -112,6 +112,7 @@ def index(request):
     not_scan = Grid.objects.filter(scanned=False).count()
     scan = Grid.objects.filter(scanned=True).count()
     list_keywords = []
+
     for keyword in keywords:
         d = {}
         d['keyword'] = keyword
@@ -120,8 +121,9 @@ def index(request):
         d['notcomplete'] = ncm
         d['complete'] = cm
         d['total'] = cm + ncm
-        d['link'] = ''
+        d['link'] = '/places/exportexcel/?name=' + keyword
         list_keywords.append(d)
+
     return render(request, 'searchreport.html',
                   {"keywords": list_keywords,
                    'allscan': scan,
@@ -178,8 +180,8 @@ def list_place(name):
         places = Place.objects.filter(place_type='nearby_7eleven')
         dl_link = 'nb7eleven'
     else:
-        places = None
-        dl_link = ''
+        places = Place.objects.filter(grid__keyword=name)
+        dl_link = '/places/exportexcel/?name=' + name
     return places, dl_link
 
 
@@ -215,7 +217,7 @@ def export_excel(request):
         row += 1
 
     response = HttpResponse()
-    response['Content-Disposition'] = 'attachment; filename=' + name + '.xls'
+    response['Content-Disposition'] = 'attachment; filename=' + 'exportdata' + '.xls'
     wb.save(response)
     return response
 
