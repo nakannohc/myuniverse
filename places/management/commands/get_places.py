@@ -76,6 +76,8 @@ class Command(BaseCommand):
                                       address=place_detail['formatted_address'],
                                       grid=g)
                             p.save()
+                else:
+                    print status + ' - ' + time.strftime("%c")
                 g.scanned = True
                 g.save()
             grids = Grid.objects.filter(scanned=False)[:numrows]

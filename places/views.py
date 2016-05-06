@@ -112,7 +112,7 @@ def nearby_search(lat, lng, radius, name):
         return [], 'INVALID_REQUEST'
     else:
         #print res['status']
-        return False
+        return [], res['status']
         
 
 def index(request):
