@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import time
+import smtplib
 from django.core.management.base import BaseCommand, CommandError
 from places.models import Place, Grid
 from places.views import get_detail, radar_search, text_search, nearby_search
@@ -8,11 +9,35 @@ from places.views import get_detail, radar_search, text_search, nearby_search
 class Command(BaseCommand):
     help = 'Parse places'
 
+    def send_email(self, message):
+        gmail_user = 'nakannohc@gmail.com'
+        gmail_pwd = 'qTut0L2$'
+        FROM = 'nakannohc@gmail.com'
+        TO = 'chonnakan.r@gmail.com'
+        SUBJECT = 'error - server %s' % time.strftime("%c")
+        TEXT = message
+
+        # Prepare actual message
+        message = """\From: %s\nTo: %s\nSubject: %s\n\n%s
+        """ % (FROM, TO, SUBJECT, TEXT)
+        try:
+            server = smtplib.SMTP("smtp.gmail.com", 587)
+            server.ehlo()
+            server.starttls()
+            server.login(gmail_user, gmail_pwd)
+            server.sendmail(FROM, TO, message)
+            server.close()
+            #print 'successfully sent the mail'
+        except:
+            #raise
+            print "failed to send mail"
+
     def handle(self, *args, **options):
         numrows = 5
         grids = Grid.objects.filter(scanned=False)[:numrows]
         count_api = 0
         error = False
+        self.send_email('test 123')
         while grids.count() and not error > 0:
             '''
             for g in grids:
@@ -45,14 +70,17 @@ class Command(BaseCommand):
                 #print status
                 if status == 'OVER_QUERY_LIMIT':
                     print '%s - OVER_QUERY_LIMIT' % time.strftime("%c")
+                    self.send_email('OVER_QUERY_LIMIT')
                     error = True
                     break
                 elif status == 'REQUEST_DENIED':
                     print '%s - REQUEST_DENIED' % time.strftime("%c")
+                    self.send_email('REQUEST_DENIED')
                     error = True
                     break
                 elif status == 'INVALID_REQUEST':
                     print '%s - INVALID_REQUEST' % time.strftime("%c")
+                    self.send_email('INVALID_REQUEST')
                     error = True
                     break
                 elif status == 'ZERO_RESULTS':
@@ -78,6 +106,9 @@ class Command(BaseCommand):
                             p.save()
                 else:
                     print status + ' - ' + time.strftime("%c")
+                    self.send_email(status)
+                    error = True
+                    break
                 g.scanned = True
                 g.save()
             grids = Grid.objects.filter(scanned=False)[:numrows]
