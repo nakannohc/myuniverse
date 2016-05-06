@@ -101,9 +101,15 @@ def nearby_search(lat, lng, radius, name):
             res = json.loads(req.content)
             if res['status'] == 'OK':
                 list += res['results']
-        return list
+        return list, 'OK'
     elif res['status'] == 'ZERO_RESULTS':
-        return []
+        return [], 'ZERO_RESULTS'
+    elif res['status'] == 'OVER_QUERY_LIMIT':
+        return [], 'OVER_QUERY_LIMIT'
+    elif res['status'] == 'REQUEST_DENIED':
+        return [], 'REQUEST_DENIED'
+    elif res['status'] == 'INVALID_REQUEST':
+        return [], 'INVALID_REQUEST'
     else:
         #print res['status']
         return False

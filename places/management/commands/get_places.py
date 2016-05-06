@@ -12,7 +12,8 @@ class Command(BaseCommand):
         numrows = 5
         grids = Grid.objects.filter(scanned=False)[:numrows]
         count_api = 0
-        while grids.count() > 0:
+        error = False
+        while grids.count() and not error > 0:
             '''
             for g in grids:
                 #print g.id,
@@ -40,25 +41,41 @@ class Command(BaseCommand):
             '''
             for g in grids:
                 #print g.keyword,
-                places = nearby_search(str(g.lat), str(g.lng), '3000', g.keyword)
-                count_api += 1
-                g.count_place = len(places)
-                #print places
-                #print len(places)
-                for place in places:
-                    place_detail = get_detail(place['place_id'])
+                places, status = nearby_search(str(g.lat), str(g.lng), '3000', g.keyword)
+                #print status
+                if status == 'OVER_QUERY_LIMIT':
+                    print '%s - OVER_QUERY_LIMIT' % time.strftime("%c")
+                    error = True
+                    break
+                elif status == 'REQUEST_DENIED':
+                    print '%s - REQUEST_DENIED' % time.strftime("%c")
+                    error = True
+                    break
+                elif status == 'INVALID_REQUEST':
+                    print '%s - INVALID_REQUEST' % time.strftime("%c")
+                    error = True
+                    break
+                elif status == 'ZERO_RESULTS':
+                    #print '%s - ZERO' % time.strftime("%c")
+                    places = []
+                elif status == 'OK':
                     count_api += 1
-                    pp = Place.objects.filter(lat=place_detail['geometry']['location']['lat'],
-                                              lng=place_detail['geometry']['location']['lng'],
-                                              grid__place_type=g.place_type)
-                    if pp.count() == 0:
-                        p = Place(name=place_detail['name'],
-                                  lat=place_detail['geometry']['location']['lat'],
-                                  lng=place_detail['geometry']['location']['lng'],
-                                  address=place_detail['formatted_address'],
-                                  grid=g)
-                        p.save()
-
+                    g.count_place = len(places)
+                    #print places
+                    #print len(places)
+                    for place in places:
+                        place_detail = get_detail(place['place_id'])
+                        count_api += 1
+                        pp = Place.objects.filter(lat=place_detail['geometry']['location']['lat'],
+                                                  lng=place_detail['geometry']['location']['lng'],
+                                                  grid__place_type=g.place_type)
+                        if pp.count() == 0:
+                            p = Place(name=place_detail['name'],
+                                      lat=place_detail['geometry']['location']['lat'],
+                                      lng=place_detail['geometry']['location']['lng'],
+                                      address=place_detail['formatted_address'],
+                                      grid=g)
+                            p.save()
                 g.scanned = True
                 g.save()
             grids = Grid.objects.filter(scanned=False)[:numrows]
