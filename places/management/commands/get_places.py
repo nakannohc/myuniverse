@@ -37,7 +37,7 @@ class Command(BaseCommand):
         grids = Grid.objects.filter(scanned=False)[:numrows]
         count_api = 0
         error = False
-        self.send_email('test 123')
+        #self.send_email('test 123')
         while grids.count() and not error > 0:
             '''
             for g in grids:
