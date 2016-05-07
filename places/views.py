@@ -92,6 +92,7 @@ def nearby_search(lat, lng, radius, name):
     res = json.loads(req.content)
     list = []
     #print url
+    err_message = ''
     if res['status'] == 'OK':
         list += res['results']
         while 'next_page_token' in res:
@@ -101,18 +102,27 @@ def nearby_search(lat, lng, radius, name):
             res = json.loads(req.content)
             if res['status'] == 'OK':
                 list += res['results']
-        return list, 'OK'
+        return list, 'OK', err_message
     elif res['status'] == 'ZERO_RESULTS':
-        return [], 'ZERO_RESULTS'
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'ZERO_RESULTS', err_message
     elif res['status'] == 'OVER_QUERY_LIMIT':
-        return [], 'OVER_QUERY_LIMIT'
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'OVER_QUERY_LIMIT', err_message
     elif res['status'] == 'REQUEST_DENIED':
-        return [], 'REQUEST_DENIED'
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'REQUEST_DENIED', err_message
     elif res['status'] == 'INVALID_REQUEST':
-        return [], 'INVALID_REQUEST'
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'INVALID_REQUEST', err_message
     else:
-        #print res['status']
-        return [], res['status']
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], res['status'], err_message
         
 
 def index(request):

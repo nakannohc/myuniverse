@@ -37,7 +37,7 @@ class Command(BaseCommand):
         grids = Grid.objects.filter(scanned=False)[:numrows]
         count_api = 0
         error = False
-        #self.send_email('test 123')
+        self.send_email('Start Search Places - %s' % time.strftime("%c"))
         while grids.count() and not error > 0:
             '''
             for g in grids:
@@ -66,20 +66,20 @@ class Command(BaseCommand):
             '''
             for g in grids:
                 #print g.keyword,
-                places, status = nearby_search(str(g.lat), str(g.lng), '3000', g.keyword)
+                places, status, err_message = nearby_search(str(g.lat), str(g.lng), '3000', g.keyword)
                 #print status
                 if status == 'OVER_QUERY_LIMIT':
-                    print '%s - OVER_QUERY_LIMIT' % time.strftime("%c")
+                    print '%s - OVER_QUERY_LIMIT - %s' % (time.strftime("%c"), err_message)
                     self.send_email('OVER_QUERY_LIMIT')
                     error = True
                     break
                 elif status == 'REQUEST_DENIED':
-                    print '%s - REQUEST_DENIED' % time.strftime("%c")
+                    print '%s - REQUEST_DENIED - %s' % (time.strftime("%c"), err_message)
                     self.send_email('REQUEST_DENIED')
                     error = True
                     break
                 elif status == 'INVALID_REQUEST':
-                    print '%s - INVALID_REQUEST' % time.strftime("%c")
+                    print '%s - INVALID_REQUEST- %s' % (time.strftime("%c"), err_message)
                     self.send_email('INVALID_REQUEST')
                     error = True
                     break
@@ -105,7 +105,7 @@ class Command(BaseCommand):
                                       grid=g)
                             p.save()
                 else:
-                    print status + ' - ' + time.strftime("%c")
+                    print status + ' - ' + time.strftime("%c") + ' - ' + err_message
                     self.send_email(status)
                     error = True
                     break
