@@ -18,11 +18,11 @@
 <table border="0" class="table">
 <thead>
     <tr>
-        <td>Keyword</td>
-        <td>Not complete grids</td>
-        <td>Complete grids</td>
-        <td>Total grids</td>
-        <td>Report download</td>
+        <th>Keyword</th>
+        <th>Not complete grids</th>
+        <th>Complete grids</th>
+        <th>Total grids</th>
+        <th>Report download</th>
     </tr>
 </thead>
 <tbody>
@@ -49,9 +49,3 @@
 </script>
 </body>
 </html>
-
-for k in keywords:
-    complete = Grid.objects.filter(keyword=k,scanned=True)
-    total = Grid.objects.filter(keyword=k)
-    sm = KeywordSummary(keyword=k, grid_count = total.count(), grid_complete = complete.count())
-    sm.save()
