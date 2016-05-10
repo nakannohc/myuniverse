@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a40192c1-9af0-460c-82d0-a994a9853ffa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/places/management/commands/get_places.py" afterPath="$PROJECT_DIR$/places/management/commands/get_places.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/searchreport.html" afterPath="$PROJECT_DIR$/templates/searchreport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myuniverse/settings.py" afterPath="$PROJECT_DIR$/myuniverse/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/myuniverse/urls.py" afterPath="$PROJECT_DIR$/myuniverse/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/places/views.py" afterPath="$PROJECT_DIR$/places/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -65,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/places/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="121" column="9" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+              <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
               <folding>
                 <element signature="e#24#39#0" expanded="true" />
               </folding>
@@ -73,43 +75,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchreport.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="searchreport.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/searchreport.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="1740" selection-start-line="34" selection-start-column="1740" selection-end-line="34" selection-end-column="1740" />
+            <state vertical-scroll-proportion="0.11111111">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/places/admin.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myuniverse/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="get_places.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="get_places.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/places/management/commands/get_places.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.27038628">
-              <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="94" column="49" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="49" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -145,23 +125,23 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/myuniverse/urls.py" />
         <option value="$PROJECT_DIR$/scripts/get_places.py" />
         <option value="$PROJECT_DIR$/places/migrations/0006_auto_20160425_0619.py" />
         <option value="$PROJECT_DIR$/templates/show_grid.html" />
         <option value="$PROJECT_DIR$/templates/show_place.html" />
         <option value="$PROJECT_DIR$/templates/report_place.html" />
         <option value="$PROJECT_DIR$/places/management/commands/app7export.py" />
-        <option value="$PROJECT_DIR$/myuniverse/settings.py" />
         <option value="$PROJECT_DIR$/disaster/admin.py" />
         <option value="$PROJECT_DIR$/disaster/models.py" />
         <option value="$PROJECT_DIR$/places/models.py" />
         <option value="$PROJECT_DIR$/places/admin.py" />
         <option value="$PROJECT_DIR$/places/urls.py" />
-        <option value="$PROJECT_DIR$/templates/searchreport.html" />
         <option value="$PROJECT_DIR$/places/management/commands/gen_grid.py" />
-        <option value="$PROJECT_DIR$/places/views.py" />
         <option value="$PROJECT_DIR$/places/management/commands/get_places.py" />
+        <option value="$PROJECT_DIR$/places/views.py" />
+        <option value="$PROJECT_DIR$/myuniverse/urls.py" />
+        <option value="$PROJECT_DIR$/myuniverse/settings.py" />
+        <option value="$PROJECT_DIR$/templates/searchreport.html" />
       </list>
     </option>
   </component>
@@ -200,6 +180,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -316,7 +297,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -587,7 +567,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="796" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="796" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -894,13 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myuniverse/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="35" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/places/migrations/0004_place_address.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -984,14 +957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/places/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/places/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1000,35 +965,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/searchreport.html">
+    <entry file="file://$PROJECT_DIR$/places/management/commands/get_places.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="1740" selection-start-line="34" selection-start-column="1740" selection-end-line="34" selection-end-column="1740" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myuniverse/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
-          <folding />
+          <caret line="94" column="49" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="49" />
+          <folding>
+            <element signature="e#24#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/places/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="121" column="9" selection-start-line="121" selection-start-column="9" selection-end-line="121" selection-end-column="9" />
+          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
           <folding>
             <element signature="e#24#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/myuniverse/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53648067">
+          <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
+          <folding>
+            <element signature="e#643#684#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myuniverse/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.88839287">
+          <caret line="129" column="1" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/places/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.1502146">
           <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
@@ -1036,13 +1013,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/places/management/commands/get_places.py">
+    <entry file="file://$PROJECT_DIR$/places/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27038628">
-          <caret line="39" column="46" selection-start-line="39" selection-start-column="46" selection-end-line="39" selection-end-column="46" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/searchreport.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11111111">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -39,12 +39,29 @@ def get_detail(place_id):
     req = requests.get(url)
     res = json.loads(req.content)
     #print res['status']
+    err_message = ''
     if res['status'] == 'OK':
-        return res['result']
+        return res['result'], 'OK', err_message
     elif res['status'] == 'ZERO_RESULTS':
-        return []
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'ZERO_RESULTS', err_message
+    elif res['status'] == 'OVER_QUERY_LIMIT':
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'OVER_QUERY_LIMIT', err_message
+    elif res['status'] == 'REQUEST_DENIED':
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'REQUEST_DENIED', err_message
+    elif res['status'] == 'INVALID_REQUEST':
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'INVALID_REQUEST', err_message
     else:
-        return False
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], res['status'], err_message
 
 
 def radar_search(lat, lng, place_type, radius):
@@ -141,6 +158,7 @@ def index(request):
                    'allscan': scan,
                    'allnotscan': not_scan,
                    'all': scan + not_scan})
+
 
 @csrf_protect
 def grid_status(request):
