@@ -2,7 +2,7 @@
 import time
 import smtplib
 from django.core.management.base import BaseCommand, CommandError
-from places.models import Place, Grid
+from places.models import Place, Grid, KeywordSummary
 from places.views import get_detail, radar_search, text_search, nearby_search
 
 
@@ -92,7 +92,7 @@ class Command(BaseCommand):
                     #print places
                     #print len(places)
                     for place in places:
-                        place_detail = get_detail(place['place_id'])
+                        place_detail, status, err_message = get_detail(place['place_id'])
                         count_api += 1
                         pp = Place.objects.filter(lat=place_detail['geometry']['location']['lat'],
                                                   lng=place_detail['geometry']['location']['lng'],
@@ -109,7 +109,10 @@ class Command(BaseCommand):
                     self.send_email(status)
                     error = True
                     break
+                kws = KeywordSummary.objects.get(keyword=g.keyword)
+                kws.grid_complete += 1
                 g.scanned = True
+                kws.save()
                 g.save()
             grids = Grid.objects.filter(scanned=False)[:numrows]
 
