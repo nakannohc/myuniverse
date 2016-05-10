@@ -151,6 +151,9 @@ def index(request):
         d = {}
         d['keyword'] = keyword
         d['link'] = '/places/exportexcel/?name=' + keyword
+        d['notcomplete'] = Grid.objects.filter(scanned=False, keyword=keyword).count()
+        d['complete'] = Grid.objects.filter(scanned=True, keyword=keyword).count()
+        d['total'] = d['notcomplete'] + d['complete']
         list_keywords.append(d)
 
     return render(request, 'searchreport.html',

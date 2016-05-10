@@ -35,7 +35,7 @@
     </tr>
     {% for k in keywords %}
         <tr>
-        <td>{{ k.keyword }}</td>
+        <td {% if k.notcomplete == 0 %}class="success" {% else %}class="active"{% endif %}>{{ k.keyword }}</td>
         <td id="{{ forloop.counter0 }}-notcom">{{ k.notcomplete }}</td>
         <td id="{{ forloop.counter0 }}-com">{{ k.complete }}</td>
         <td id="{{ forloop.counter0 }}-total">{{ k.total}}</td>
