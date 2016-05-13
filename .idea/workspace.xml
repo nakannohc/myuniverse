@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a40192c1-9af0-460c-82d0-a994a9853ffa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/searchreport.html" afterPath="$PROJECT_DIR$/templates/searchreport.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/places/management/commands/repair_data.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keywords.xlsx" afterPath="$PROJECT_DIR$/keywords.xlsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/places/models.py" afterPath="$PROJECT_DIR$/places/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="myuniverse.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/places/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <caret line="52" column="57" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -51,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/places/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="123" column="56" selection-start-line="123" selection-start-column="56" selection-end-line="123" selection-end-column="56" />
+              <caret line="11" column="46" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="46" />
               <folding>
                 <element signature="e#24#39#0" expanded="true" />
               </folding>
@@ -59,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchreport.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="searchreport.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/searchreport.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8">
-              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -85,7 +88,19 @@
         <entry file="file://$PROJECT_DIR$/places/management/commands/get_places.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="114" column="25" selection-start-line="114" selection-start-column="25" selection-end-line="114" selection-end-column="25" />
+              <caret line="103" column="67" selection-start-line="0" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="repair_data.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/places/management/commands/repair_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.72103006">
+              <caret line="78" column="36" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -119,7 +134,7 @@
         <entry file="file://$PROJECT_DIR$/places/management/commands/gen_grid.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
+              <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
               <folding>
                 <element signature="e#24#89#0" expanded="true" />
               </folding>
@@ -132,8 +147,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Html5" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -156,10 +171,11 @@
         <option value="$PROJECT_DIR$/places/admin.py" />
         <option value="$PROJECT_DIR$/myuniverse/settings.py" />
         <option value="$PROJECT_DIR$/myuniverse/urls.py" />
-        <option value="$PROJECT_DIR$/places/models.py" />
         <option value="$PROJECT_DIR$/places/management/commands/get_places.py" />
-        <option value="$PROJECT_DIR$/places/views.py" />
         <option value="$PROJECT_DIR$/templates/searchreport.html" />
+        <option value="$PROJECT_DIR$/places/views.py" />
+        <option value="$PROJECT_DIR$/places/models.py" />
+        <option value="$PROJECT_DIR$/places/management/commands/repair_data.py" />
       </list>
     </option>
   </component>
@@ -197,8 +213,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -242,6 +256,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="places" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myuniverse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myuniverse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="places" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -315,6 +347,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -625,16 +659,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/places/management/commands/gen_grid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#89#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/places/management/commands/get_places.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -955,31 +979,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/places/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/disaster/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.021459227">
           <caret line="1" column="36" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#32#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/places/management/commands/gen_grid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="57" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="57" />
-          <folding>
-            <element signature="e#24#89#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1001,10 +1004,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/places/models.py">
+    <entry file="file://$PROJECT_DIR$/templates/searchreport.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/places/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
           <folding />
         </state>
       </provider>
@@ -1019,31 +1030,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/places/management/commands/gen_grid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="61" selection-start-line="37" selection-start-column="61" selection-end-line="37" selection-end-column="61" />
+          <folding>
+            <element signature="e#24#89#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/places/management/commands/get_places.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="114" column="25" selection-start-line="114" selection-start-column="25" selection-end-line="114" selection-end-column="25" />
+          <caret line="103" column="67" selection-start-line="0" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/places/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="57" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/places/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="56" selection-start-line="123" selection-start-column="56" selection-end-line="123" selection-end-column="56" />
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="46" />
           <folding>
             <element signature="e#24#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/searchreport.html">
+    <entry file="file://$PROJECT_DIR$/places/management/commands/repair_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-          <folding />
+        <state vertical-scroll-proportion="0.72103006">
+          <caret line="78" column="36" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
+          <folding>
+            <element signature="e#24#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

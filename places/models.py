@@ -49,6 +49,9 @@ class Place(models.Model):
     lat = models.FloatField()
     lng = models.FloatField()
     address = models.TextField()
+    place_id = models.CharField(max_length=250, null=True)
+    permanently_closed = models.BooleanField(default=False)
+    place_detail = models.TextField(null=True)
     grid = models.ForeignKey(Grid, blank=True, null=True)
 
 
@@ -59,6 +62,3 @@ class KeywordSummary(models.Model):
     keyword = models.CharField(max_length=250)
     grid_count = models.IntegerField()
     grid_complete = models.IntegerField()
-
-
-
