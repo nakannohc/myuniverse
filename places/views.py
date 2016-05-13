@@ -126,6 +126,7 @@ def index(request):
     list_keywords = []
     scan = 0
     not_scan = 0
+    not_repair = Place.objects.filter(place_id__isnull=False).count()
     for keyword in keywords:
         d = {}
         d['keyword'] = keyword.keyword
@@ -140,7 +141,8 @@ def index(request):
                   {"keywords": list_keywords,
                    'allscan': scan,
                    'allnotscan': not_scan,
-                   'all': scan + not_scan})
+                   'all': scan + not_scan,
+                   'notrepair': not_repair})
 
 
 @csrf_protect

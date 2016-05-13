@@ -66,9 +66,9 @@ class Command(BaseCommand):
                     places = []
                 elif status == 'OK':
                     for p in pp:
-			#print '%s, %f - %s %f' % (p['name'], p['geometry']['location']['lat'], place.name, place.lat),
-			#print p['name'] == place.name,
-			#print p['geometry']['location']['lat'] - place.lat
+                        #print '%s, %f - %s %f' % (p['name'], p['geometry']['location']['lat'], place.name, place.lat),
+                        #print p['name'] == place.name,
+                        #print p['geometry']['location']['lat'] - place.lat
                         if p['name'] == place.name and math.fabs(place.lat - p['geometry']['location']['lat']) < error_r and math.fabs(place.lng - p['geometry']['location']['lng']) < error_r :
                             #print p['name']
                             place_detail, status, err_message = get_detail(p['place_id'])

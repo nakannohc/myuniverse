@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import time
 import smtplib
+import json
 from django.core.management.base import BaseCommand, CommandError
 from places.models import Place, Grid, KeywordSummary
 from places.views import get_detail, radar_search, text_search, nearby_search
+
 
 
 class Command(BaseCommand):
@@ -102,7 +104,14 @@ class Command(BaseCommand):
                                       lat=place_detail['geometry']['location']['lat'],
                                       lng=place_detail['geometry']['location']['lng'],
                                       address=place_detail['formatted_address'],
-                                      grid=g)
+                                      grid=g,
+                                      place_id=place_detail['place_id'],
+                                      place_detail=json.dumps(place_detail))
+
+                            if 'permanently_closed' in place_detail:
+                                p.permanently_closed = True
+                            else:
+                                p.permanently_closed = False
                             p.save()
                 else:
                     print status + ' - ' + time.strftime("%c") + ' - ' + err_message
