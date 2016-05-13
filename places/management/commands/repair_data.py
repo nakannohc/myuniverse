@@ -64,7 +64,7 @@ class Command(BaseCommand):
                     places = []
                 elif status == 'OK':
                     for p in pp:
-                        if p['name'] == place.name and place.lat == p['geometry']['location']['lat'] and place.lng == p['geometry']['location']['lat']:
+                        if p['name'] == place.name and place.lat == p['geometry']['location']['lat'] and place.lng == p['geometry']['location']['lng']:
                             place_detail, status, err_message = get_detail(p['place_id'])
                             #print place_detail
                             if 'permanently_closed' in place_detail:

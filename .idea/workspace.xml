@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a40192c1-9af0-460c-82d0-a994a9853ffa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/places/management/commands/repair_data.py" afterPath="$PROJECT_DIR$/places/management/commands/repair_data.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="myuniverse.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -97,8 +96,8 @@
       <file leaf-file-name="repair_data.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/places/management/commands/repair_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57081544">
-              <caret line="61" column="46" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.48497853">
+              <caret line="66" column="148" selection-start-line="66" selection-start-column="148" selection-end-line="66" selection-end-column="148" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -1068,8 +1067,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/places/management/commands/repair_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57081544">
-          <caret line="61" column="46" selection-start-line="61" selection-start-column="46" selection-end-line="61" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.48497853">
+          <caret line="66" column="148" selection-start-line="66" selection-start-column="148" selection-end-line="66" selection-end-column="148" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
