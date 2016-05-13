@@ -64,7 +64,7 @@ class Command(BaseCommand):
                     places = []
                 elif status == 'OK':
                     for p in pp:
-                        if p['name'] == place.name:
+                        if p['name'] == place.name and place.lat == p['geometry']['location']['lat'] and place.lng == p['geometry']['location']['lat']:
                             place_detail, status, err_message = get_detail(p['place_id'])
                             #print place_detail
                             if 'permanently_closed' in place_detail:
@@ -82,5 +82,5 @@ class Command(BaseCommand):
                     self.send_email(status)
                     error = True
                     break
-            places = Place.objects.filter(place_id='')[:numrows]
+            places = Place.objects.filter(place_id=None)[:numrows]
 
