@@ -36,8 +36,6 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         numrows = 10
         places = Place.objects.filter(place_id=None)[:numrows]
-        print len(places)
-        count_api = 0
         error = False
         #self.send_email('Start Repair Places - %s' % time.strftime("%c"))
         while places.count() and not error > 0:
@@ -67,7 +65,7 @@ class Command(BaseCommand):
                     for p in pp:
                         if p['name'] == place.name:
                             place_detail, status, err_message = get_detail(p['place_id'])
-                            print place_detail
+                            #print place_detail
                             if 'permanently_closed' in place_detail:
                                 place.permanently_closed = True
                             else:
@@ -76,12 +74,12 @@ class Command(BaseCommand):
                             place.place_detail = json.dumps(place_detail)
                             place.save()
                         else:
-                            print '*'*100
+                            pass
+                            #print '*'*100
                 else:
                     print status + ' - ' + time.strftime("%c") + ' - ' + err_message
                     self.send_email(status)
                     error = True
                     break
-            break
             places = Place.objects.filter(place_id='')[:numrows]
 
