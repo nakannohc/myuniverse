@@ -38,11 +38,12 @@ class Command(BaseCommand):
         places = Place.objects.filter(place_id=None)[:numrows]
         print len(places)
         error = False
+	error_r = 0.00000000001
         #self.send_email('Start Repair Places - %s' % time.strftime("%c"))
         while places.count() and not error > 0:
             for place in places:
                 #print g.keyword,
-                pp, status, err_message = nearby_search(str(place.lat), str(place.lng), '1', place.name)
+                pp, status, err_message = nearby_search(str(place.lat), str(place.lng), '50', place.name)
                 #print status
                 if status == 'OVER_QUERY_LIMIT':
                     print '%s - OVER_QUERY_LIMIT - %s' % (time.strftime("%c"), err_message)
@@ -64,7 +65,11 @@ class Command(BaseCommand):
                     places = []
                 elif status == 'OK':
                     for p in pp:
-                        if p['name'] == place.name and place.lat == p['geometry']['location']['lat'] and place.lng == p['geometry']['location']['lng']:
+			#print '%s, %f - %s %f' % (p['name'], p['geometry']['location']['lat'], place.name, place.lat),
+			#print p['name'] == place.name,
+			#print p['geometry']['location']['lat'] - place.lat
+                        if p['name'] == place.name and (place.lat - p['geometry']['location']['lat']) < error_r and (place.lng - p['geometry']['location']['lng']) < error_r :
+                            print p['name']
                             place_detail, status, err_message = get_detail(p['place_id'])
                             #print place_detail
                             if 'permanently_closed' in place_detail:
