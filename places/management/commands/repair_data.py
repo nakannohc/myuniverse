@@ -69,7 +69,7 @@ class Command(BaseCommand):
 			#print p['name'] == place.name,
 			#print p['geometry']['location']['lat'] - place.lat
                         if p['name'] == place.name and (place.lat - p['geometry']['location']['lat']) < error_r and (place.lng - p['geometry']['location']['lng']) < error_r :
-                            print p['name']
+                            #print p['name']
                             place_detail, status, err_message = get_detail(p['place_id'])
                             #print place_detail
                             if 'permanently_closed' in place_detail:
