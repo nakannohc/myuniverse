@@ -2,6 +2,7 @@
 import time
 import smtplib
 import json
+import math
 from django.core.management.base import BaseCommand, CommandError
 from places.models import Place, Grid, KeywordSummary
 from places.views import get_detail, radar_search, text_search, nearby_search
@@ -38,12 +39,12 @@ class Command(BaseCommand):
         places = Place.objects.filter(place_id=None)[:numrows]
         print len(places)
         error = False
-	error_r = 0.00000000001
+	error_r = 0.0000000001
         #self.send_email('Start Repair Places - %s' % time.strftime("%c"))
         while places.count() and not error > 0:
             for place in places:
                 #print g.keyword,
-                pp, status, err_message = nearby_search(str(place.lat), str(place.lng), '50', place.name)
+                pp, status, err_message = nearby_search(str(place.lat), str(place.lng), '1', place.name)
                 #print status
                 if status == 'OVER_QUERY_LIMIT':
                     print '%s - OVER_QUERY_LIMIT - %s' % (time.strftime("%c"), err_message)
@@ -68,7 +69,7 @@ class Command(BaseCommand):
 			#print '%s, %f - %s %f' % (p['name'], p['geometry']['location']['lat'], place.name, place.lat),
 			#print p['name'] == place.name,
 			#print p['geometry']['location']['lat'] - place.lat
-                        if p['name'] == place.name and (place.lat - p['geometry']['location']['lat']) < error_r and (place.lng - p['geometry']['location']['lng']) < error_r :
+                        if p['name'] == place.name and math.fabs(place.lat - p['geometry']['location']['lat']) < error_r and math.fabs(place.lng - p['geometry']['location']['lng']) < error_r :
                             #print p['name']
                             place_detail, status, err_message = get_detail(p['place_id'])
                             #print place_detail
