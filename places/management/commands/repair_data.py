@@ -85,7 +85,7 @@ class Command(BaseCommand):
                         #aprob = SequenceMatcher(None,p['formatted_address'], place.address).ratio()
                         nprob = SequenceMatcher(None, p['name'], place.name).ratio()
 
-                        print '%s --- %s = %f' % (place.name, p['name'], nprob)
+                        #print '%s --- %s = %f' % (place.name, p['name'], nprob)
                         #if aprob > maprob and aprob > 0.7:
                         #    maprob = aprob
                         #   dest = p
@@ -98,6 +98,7 @@ class Command(BaseCommand):
                     print '*'*100
                     if dest is not None:
                         #print '%s - %s' % (dest['name'], place.name)
+                        print '%d: %s --- %s = %f' % (place.id, place.name, dest['name'], mnprob)
                         place_detail, status, err_message = get_detail(dest['place_id'])
                         #print place_detail
                         if 'permanently_closed' in place_detail:
