@@ -78,9 +78,9 @@ class Command(BaseCommand):
                         #print p
                         #if p['formatted_address'] == place.address:
                         #aprob = SequenceMatcher(None,p['formatted_address'], place.address).ratio()
-                        nprob = SequenceMatcher(None,p['name'], place.name).ratio()
+                        nprob = SequenceMatcher(None, p['name'], place.name).ratio()
 
-                        print '%s --- %s = %f' % (place.name, p['name'], nprob)
+                        #print '%s --- %s = %f' % (place.name, p['name'], nprob)
                         #if aprob > maprob and aprob > 0.7:
                         #    maprob = aprob
                         #   dest = p
@@ -88,7 +88,7 @@ class Command(BaseCommand):
                         if nprob > mnprob and nprob > 0.7:
                             mnprob = nprob
                             dest = p
-                    print '*'*100
+                    #print '*'*100
                     if dest is not None:
                         #print '%s - %s' % (dest['name'], place.name)
                         place_detail, status, err_message = get_detail(dest['place_id'])
@@ -100,9 +100,11 @@ class Command(BaseCommand):
                         place.place_id = place_detail['place_id']
                         place.place_detail = json.dumps(place_detail)
                         place.save()
-                        break
                     else:
-                        pass
+                        #print '%s - %s' % (dest['name'], place.name)
+                        place.place_id = '####'
+                        place.place_detail = '####'
+                        place.save()
                 else:
                     print status + ' - ' + time.strftime("%c") + ' - ' + err_message
                     self.send_email(status)
