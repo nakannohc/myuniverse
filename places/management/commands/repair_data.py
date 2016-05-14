@@ -91,8 +91,10 @@ class Command(BaseCommand):
                         #   dest = p
 
                         if nprob > mnprob and nprob > 0.7:
-                            mnprob = nprob
-                            dest = p
+                            if math.fabs(p['geometry']['location']['lat'] - place.lat) < error_r and math.fabs(p['geometry']['location']['lng'] - place.lng) < error_r :
+                                mnprob = nprob
+                                dest = p
+
                     print '*'*100
                     if dest is not None:
                         #print '%s - %s' % (dest['name'], place.name)
