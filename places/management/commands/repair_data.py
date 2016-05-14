@@ -70,6 +70,7 @@ class Command(BaseCommand):
                     maprob = 0.0
                     mnprob = 0.0
                     dest = None
+                    print len(pp)
                     for p in pp:
                         #print '%d --- %s, %f - %s %f' % (place.id, p['name'], p['geometry']['location']['lat'], place.name, place.lat),
                         #print p['name'] == place.name,
