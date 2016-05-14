@@ -9,8 +9,8 @@ from django.http import HttpResponse
 from places.models import Place, Grid, KeywordSummary
 from places.models import keywords
 
-key = 'AIzaSyA9RDsFBy2tE2PXnx9ecqCxN7mBXMsuHCE'
-#key = 'AIzaSyDq4qrtdYVQkr58iQi3s-Vm_RFslQdfcgE'
+#key = 'AIzaSyA9RDsFBy2tE2PXnx9ecqCxN7mBXMsuHCE'
+key = 'AIzaSyDq4qrtdYVQkr58iQi3s-Vm_RFslQdfcgE'
 
 
 def get_detail(place_id):
