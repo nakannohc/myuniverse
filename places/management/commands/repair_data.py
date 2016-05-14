@@ -75,7 +75,7 @@ class Command(BaseCommand):
                         #print p
                         #if p['formatted_address'] == place.address:
                         if math.fabs(place.lat - p['geometry']['location']['lat']) < error_r and math.fabs(place.lng - p['geometry']['location']['lng']) < error_r :
-                            #print p['name']
+                            print p['name']
                             place_detail, status, err_message = get_detail(p['place_id'])
                             #print place_detail
                             if 'permanently_closed' in place_detail:
