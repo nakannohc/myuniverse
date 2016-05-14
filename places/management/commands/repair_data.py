@@ -80,7 +80,7 @@ class Command(BaseCommand):
                         aprob = SequenceMatcher(None,p['formatted_address'], place.address).ratio()
                         nprob = SequenceMatcher(None,p['name'], place.name).ratio()
 
-                        print '%s = %f %f' % (p['name'], aprob, nprob)
+                        print '%s, %s = %f %f' % (place.name, p['name'], aprob, nprob)
                         if aprob > maprob and aprob > 0.7:
                             maprob = aprob
                             dest = p
