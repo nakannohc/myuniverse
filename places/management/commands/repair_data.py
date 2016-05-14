@@ -47,7 +47,7 @@ class Command(BaseCommand):
                 #print g.keyword,
                 pp, status, err_message = nearby_search(str(place.lat), str(place.lng), '3000', place.name)
                 #print status
-                print pp
+                #print pp
                 if status == 'OVER_QUERY_LIMIT':
                     print '%s - OVER_QUERY_LIMIT - %s' % (time.strftime("%c"), err_message)
                     self.send_email('OVER_QUERY_LIMIT')
@@ -65,13 +65,16 @@ class Command(BaseCommand):
                     break
                 elif status == 'ZERO_RESULTS':
                     #print '%s - ZERO' % time.strftime("%c")
-                    places = []
+                    #places = []
+                    place.place_id = '####'
+                    place.place_detail = '####'
+                    place.save()
                 elif status == 'OK':
                     #print len(pp)
                     maprob = 0.0
                     mnprob = 0.0
                     dest = None
-                    print len(pp)
+                    #print len(pp)
                     for p in pp:
                         #print '%d --- %s, %f - %s %f' % (place.id, p['name'], p['geometry']['location']['lat'], place.name, place.lat),
                         #print p['name'] == place.name,
