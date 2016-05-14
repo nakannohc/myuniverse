@@ -67,7 +67,8 @@ class Command(BaseCommand):
                     places = []
                 elif status == 'OK':
                     #print len(pp)
-                    prob = 0.0
+                    maprob = 0.0
+                    mnprob = 0.0
                     dest = None
                     for p in pp:
                         #print '%d --- %s, %f - %s %f' % (place.id, p['name'], p['geometry']['location']['lat'], place.name, place.lat),
@@ -76,10 +77,16 @@ class Command(BaseCommand):
                         #print p['geometry']['location']['lng'] - place.lng
                         #print p
                         #if p['formatted_address'] == place.address:
-                        pprob = SequenceMatcher(None,p['formatted_address'], place.address).ratio()
-                        print '%s = %f' % (p['name'], pprob)
-                        if pprob > prob and pprob > 0.8:
-                            prob = pprob
+                        aprob = SequenceMatcher(None,p['formatted_address'], place.address).ratio()
+                        nprob = SequenceMatcher(None,p['name'], place.name).ratio()
+
+                        print '%s = %f %f' % (p['name'], aprob, nprob)
+                        if aprob > maprob and aprob > 0.7:
+                            maprob = aprob
+                            dest = p
+
+                        if nprob > mnprob and nprob > 0.7:
+                            mnprob = nprob
                             dest = p
                     print '*'*100
                     if dest is not None:
