@@ -3,6 +3,7 @@ import time
 import smtplib
 import json
 import math
+from difflib import SequenceMatcher
 from django.core.management.base import BaseCommand, CommandError
 from places.models import Place, Grid, KeywordSummary
 from places.views import get_detail, radar_search, text_search, nearby_search
@@ -66,29 +67,34 @@ class Command(BaseCommand):
                     places = []
                 elif status == 'OK':
                     #print len(pp)
+                    prob = 0.0
+                    dest = None
                     for p in pp:
-                        print '%d --- %s, %f - %s %f' % (place.id, p['name'], p['geometry']['location']['lat'], place.name, place.lat),
+                        #print '%d --- %s, %f - %s %f' % (place.id, p['name'], p['geometry']['location']['lat'], place.name, place.lat),
                         #print p['name'] == place.name,
                         #print p['geometry']['location']['lat'] - place.lat
                         #print p['geometry']['location']['lng'] - place.lng
-
                         #print p
                         #if p['formatted_address'] == place.address:
-                        if math.fabs(place.lat - p['geometry']['location']['lat']) < error_r and math.fabs(place.lng - p['geometry']['location']['lng']) < error_r :
-                            print p['name']
-                            place_detail, status, err_message = get_detail(p['place_id'])
-                            #print place_detail
-                            if 'permanently_closed' in place_detail:
-                                place.permanently_closed = True
-                            else:
-                                place.permanently_closed = False
-                            place.place_id = place_detail['place_id']
-                            place.place_detail = json.dumps(place_detail)
-                            place.save()
-                            break
+                        pprob = SequenceMatcher(None,p['formatted_address'], place.address).ratio()
+                        #print pprob
+                        if pprob > prob and pprob > 0.8:
+                            prob = pprob
+                            dest = p
+                    if dest is not None:
+                        #print '%s - %s' % (dest['name'], place.name)
+                        place_detail, status, err_message = get_detail(dest['place_id'])
+                        #print place_detail
+                        if 'permanently_closed' in place_detail:
+                            place.permanently_closed = True
                         else:
-                            pass
-                        print '*'*100
+                            place.permanently_closed = False
+                        place.place_id = place_detail['place_id']
+                        place.place_detail = json.dumps(place_detail)
+                        place.save()
+                        break
+                    else:
+                        pass
                 else:
                     print status + ' - ' + time.strftime("%c") + ' - ' + err_message
                     self.send_email(status)
