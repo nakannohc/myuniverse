@@ -47,6 +47,7 @@ class Command(BaseCommand):
                 #print g.keyword,
                 pp, status, err_message = nearby_search(str(place.lat), str(place.lng), '1', place.name)
                 #print status
+                print pp
                 if status == 'OVER_QUERY_LIMIT':
                     print '%s - OVER_QUERY_LIMIT - %s' % (time.strftime("%c"), err_message)
                     self.send_email('OVER_QUERY_LIMIT')
