@@ -45,7 +45,7 @@ class Command(BaseCommand):
         while places.count() and not error > 0:
             for place in places:
                 #print g.keyword,
-                pp, status, err_message = text_search(str(place.grid.lat), str(place.grid.lng), '3000', place.name)
+                pp, status, err_message = text_search(str(place.lat), str(place.lng), '3000', place.name)
                 #print status
                 if status == 'OVER_QUERY_LIMIT':
                     print '%s - OVER_QUERY_LIMIT - %s' % (time.strftime("%c"), err_message)
