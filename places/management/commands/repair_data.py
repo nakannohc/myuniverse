@@ -38,7 +38,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         numrows = 10
         places = Place.objects.filter(place_id=None)[:numrows]
-        #print len(places)
+        print len(places)
         error = False
         error_r = 0.001
         #self.send_email('Start Repair Places - %s' % time.strftime("%c"))
