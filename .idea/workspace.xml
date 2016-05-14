@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a40192c1-9af0-460c-82d0-a994a9853ffa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/places/admin.py" afterPath="$PROJECT_DIR$/places/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/places/management/commands/repair_data.py" afterPath="$PROJECT_DIR$/places/management/commands/repair_data.py" />
     </list>
     <ignored path="myuniverse.iws" />
@@ -97,8 +96,8 @@
       <file leaf-file-name="repair_data.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/places/management/commands/repair_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.6523605">
-              <caret line="43" column="45" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.5493562">
+              <caret line="47" column="100" selection-start-line="47" selection-start-column="100" selection-end-line="47" selection-end-column="100" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -1070,8 +1069,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/places/management/commands/repair_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6523605">
-          <caret line="43" column="45" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.5493562">
+          <caret line="47" column="100" selection-start-line="47" selection-start-column="100" selection-end-line="47" selection-end-column="100" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
