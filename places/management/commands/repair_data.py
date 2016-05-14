@@ -101,13 +101,14 @@ class Command(BaseCommand):
                         print '%d: %s --- %s = %f' % (place.id, place.name, dest['name'], mnprob)
                         place_detail, status, err_message = get_detail(dest['place_id'])
                         #print place_detail
-                        if 'permanently_closed' in place_detail:
-                            place.permanently_closed = True
-                        else:
-                            place.permanently_closed = False
-                        place.place_id = place_detail['place_id']
-                        place.place_detail = json.dumps(place_detail)
-                        place.save()
+                        if status == 'OK'
+                            if 'permanently_closed' in place_detail:
+                                place.permanently_closed = True
+                            else:
+                                place.permanently_closed = False
+                            place.place_id = place_detail['place_id']
+                            place.place_detail = json.dumps(place_detail)
+                            place.save()
                     else:
                         #print '%s - %s' % (dest['name'], place.name)
                         place.place_id = '####'
