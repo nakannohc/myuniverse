@@ -85,9 +85,10 @@ class Command(BaseCommand):
                             place.place_id = place_detail['place_id']
                             place.place_detail = json.dumps(place_detail)
                             place.save()
+                            break
                         else:
                             pass
-                        #print '*'*100
+                        print '*'*100
                 else:
                     print status + ' - ' + time.strftime("%c") + ' - ' + err_message
                     self.send_email(status)

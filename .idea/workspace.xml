@@ -96,8 +96,8 @@
       <file leaf-file-name="repair_data.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/places/management/commands/repair_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42060086">
-              <caret line="46" column="89" selection-start-line="46" selection-start-column="89" selection-end-line="46" selection-end-column="89" />
+            <state vertical-scroll-proportion="0.7424893">
+              <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -1069,8 +1069,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/places/management/commands/repair_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42060086">
-          <caret line="46" column="89" selection-start-line="46" selection-start-column="89" selection-end-line="46" selection-end-column="89" />
+        <state vertical-scroll-proportion="0.7424893">
+          <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
