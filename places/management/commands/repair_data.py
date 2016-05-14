@@ -101,7 +101,7 @@ class Command(BaseCommand):
                         print '%d: %s --- %s = %f' % (place.id, place.name, dest['name'], mnprob)
                         place_detail, status, err_message = get_detail(dest['place_id'])
                         #print place_detail
-                        if status == 'OK'
+                        if status == 'OK':
                             if 'permanently_closed' in place_detail:
                                 place.permanently_closed = True
                             else:
@@ -120,4 +120,3 @@ class Command(BaseCommand):
                     error = True
                     break
             places = Place.objects.filter(place_id=None)[:numrows]
-
