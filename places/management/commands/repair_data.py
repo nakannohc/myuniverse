@@ -44,7 +44,7 @@ class Command(BaseCommand):
         while places.count() and not error > 0:
             for place in places:
                 #print g.keyword,
-                pp, status, err_message = text_search(str(place.lat), str(place.lng), '1', place.name)
+                pp, status, err_message = text_search(str(place.lat), str(place.lng), '1000', place.name)
                 #print status
                 if status == 'OVER_QUERY_LIMIT':
                     print '%s - OVER_QUERY_LIMIT - %s' % (time.strftime("%c"), err_message)
@@ -67,14 +67,15 @@ class Command(BaseCommand):
                 elif status == 'OK':
                     #print len(pp)
                     for p in pp:
-                        #print '%d --- %s, %f - %s %f' % (place.id, p['name'], p['geometry']['location']['lat'], place.name, place.lat),
+                        print '%d --- %s, %f - %s %f' % (place.id, p['name'], p['geometry']['location']['lat'], place.name, place.lat)
+                        print '%s - %s' % (p['formatted_address'], place.address)
                         #print p['name'] == place.name,
                         #print p['geometry']['location']['lat'] - place.lat
                         #print p['geometry']['location']['lng'] - place.lng
                         #if math.fabs(place.lat - p['geometry']['location']['lat']) < error_r and math.fabs(place.lng - p['geometry']['location']['lng']) < error_r :
                         #print p
                         if p['formatted_address'] == place.address:
-                            #print p['name']
+                            print p['name']
                             place_detail, status, err_message = get_detail(p['place_id'])
                             #print place_detail
                             if 'permanently_closed' in place_detail:
