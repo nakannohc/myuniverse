@@ -57,13 +57,14 @@ def radar_search(lat, lng, place_type, radius):
         return False
 
 
-def text_search(lat, lng, query):
-    url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?radius=' 
-    url = url + lat + ',' + lng + '&query=' + query + '&key=' + key
+def text_search(lat, lng, radius,  query):
+    url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?location='
+    url = url + lat + ',' + lng + '&query=' + query + '&radius=' + radius +'&key=' + key
     req = requests.get(url)
     res = json.loads(req.content)
     list = []
     #print url
+    err_message = ''
     if res['status'] == 'OK':
         list += res['results']
         while 'next_page_token' in res:
@@ -73,12 +74,27 @@ def text_search(lat, lng, query):
             res = json.loads(req.content)
             if res['status'] == 'OK':
                 list += res['results']
-        return list
+        return list, 'OK', err_message
     elif res['status'] == 'ZERO_RESULTS':
-        return []
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'ZERO_RESULTS', err_message
+    elif res['status'] == 'OVER_QUERY_LIMIT':
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'OVER_QUERY_LIMIT', err_message
+    elif res['status'] == 'REQUEST_DENIED':
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'REQUEST_DENIED', err_message
+    elif res['status'] == 'INVALID_REQUEST':
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], 'INVALID_REQUEST', err_message
     else:
-        #print res['status']
-        return False
+        if 'error_message' in res:
+            err_message = res['error_message']
+        return [], res['status'], err_message
 
 
 def nearby_search(lat, lng, radius, name):
