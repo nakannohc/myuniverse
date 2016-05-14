@@ -77,7 +77,7 @@ class Command(BaseCommand):
                         #print p
                         #if p['formatted_address'] == place.address:
                         pprob = SequenceMatcher(None,p['formatted_address'], place.address).ratio()
-                        print pprob
+                        print '%s = %f' % (p['name'], pprob)
                         if pprob > prob and pprob > 0.8:
                             prob = pprob
                             dest = p
