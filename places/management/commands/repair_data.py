@@ -39,13 +39,14 @@ class Command(BaseCommand):
         places = Place.objects.filter(place_id=None)[:numrows]
         print len(places)
         error = False
-	error_r = 0.0000000001
+	error_r = 0.001
         #self.send_email('Start Repair Places - %s' % time.strftime("%c"))
         while places.count() and not error > 0:
             for place in places:
                 #print g.keyword,
-                pp, status, err_message = nearby_search(str(place.lat), str(place.lng), '1', place.name)
+                pp, status, err_message = nearby_search(str(place.lat), str(place.lng), '3000', place.name)
                 #print status
+                print place.id
                 if status == 'OVER_QUERY_LIMIT':
                     print '%s - OVER_QUERY_LIMIT - %s' % (time.strftime("%c"), err_message)
                     self.send_email('OVER_QUERY_LIMIT')
@@ -65,12 +66,16 @@ class Command(BaseCommand):
                     #print '%s - ZERO' % time.strftime("%c")
                     places = []
                 elif status == 'OK':
+                    #print len(pp)
                     for p in pp:
-                        #print '%s, %f - %s %f' % (p['name'], p['geometry']['location']['lat'], place.name, place.lat),
+                        #print '%d --- %s, %f - %s %f' % (place.id, p['name'], p['geometry']['location']['lat'], place.name, place.lat),
                         #print p['name'] == place.name,
                         #print p['geometry']['location']['lat'] - place.lat
-                        if p['name'] == place.name and math.fabs(place.lat - p['geometry']['location']['lat']) < error_r and math.fabs(place.lng - p['geometry']['location']['lng']) < error_r :
-                            #print p['name']
+                        #print p['geometry']['location']['lng'] - place.lng
+                        #if math.fabs(place.lat - p['geometry']['location']['lat']) < error_r and math.fabs(place.lng - p['geometry']['location']['lng']) < error_r :
+                        #print p
+                        if p['vicinity'] == place.address:
+                            print p['name']
                             place_detail, status, err_message = get_detail(p['place_id'])
                             #print place_detail
                             if 'permanently_closed' in place_detail:
@@ -82,7 +87,7 @@ class Command(BaseCommand):
                             place.save()
                         else:
                             pass
-                            #print '*'*100
+                        #print '*'*100
                 else:
                     print status + ' - ' + time.strftime("%c") + ' - ' + err_message
                     self.send_email(status)
