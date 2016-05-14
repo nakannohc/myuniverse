@@ -77,13 +77,13 @@ class Command(BaseCommand):
                         #print p['geometry']['location']['lng'] - place.lng
                         #print p
                         #if p['formatted_address'] == place.address:
-                        aprob = SequenceMatcher(None,p['formatted_address'], place.address).ratio()
+                        #aprob = SequenceMatcher(None,p['formatted_address'], place.address).ratio()
                         nprob = SequenceMatcher(None,p['name'], place.name).ratio()
 
-                        print '%s, %s = %f %f' % (place.name, p['name'], aprob, nprob)
-                        if aprob > maprob and aprob > 0.7:
-                            maprob = aprob
-                            dest = p
+                        print '%s, %s = %f' % (place.name, p['name'], nprob)
+                        #if aprob > maprob and aprob > 0.7:
+                        #    maprob = aprob
+                        #   dest = p
 
                         if nprob > mnprob and nprob > 0.7:
                             mnprob = nprob
