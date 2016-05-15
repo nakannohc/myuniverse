@@ -59,7 +59,7 @@ class Command(BaseCommand):
                     error = True
                     break
                 elif status == 'INVALID_REQUEST':
-                    print '%s - INVALID_REQUEST- %s' % (time.strftime("%c"), err_message)
+                    print '%s - INVALID_REQUEST - %s' % (time.strftime("%c"), err_message)
                     self.send_email('INVALID_REQUEST')
                     error = True
                     break
