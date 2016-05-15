@@ -2,6 +2,7 @@
 import requests
 import json
 import xlwt
+import urllib
 from django.db.models import Q
 from django.shortcuts import render, render_to_response
 from django.views.decorators.csrf import csrf_protect
@@ -100,7 +101,7 @@ def text_search(lat, lng, radius,  query):
 def nearby_search(lat, lng, radius, name):
     url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
     url = url + lat + ',' + lng + '&name=' + name + '&radius=' + radius + '&key=' + key
-    req = requests.get(url)
+    req = requests.get(urllib.quote(url, safe=''))
     res = json.loads(req.content)
     list = []
     #print url
