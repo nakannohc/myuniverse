@@ -101,7 +101,7 @@ def text_search(lat, lng, radius,  query):
 def nearby_search(lat, lng, radius, name):
     url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
     url = url + lat + ',' + lng + '&name=' + name + '&radius=' + radius + '&key=' + key
-    req = requests.get(urllib.quote(url, safe='/'))
+    req = requests.get(urllib.quote(url, safe=['/', ':']))
     res = json.loads(req.content)
     list = []
     #print url
