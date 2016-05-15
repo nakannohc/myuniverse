@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 import requests
 import json
 import xlwt
 import urllib
-from __future__ import unicode_literals
 from django.db.models import Q
 from django.shortcuts import render, render_to_response
 from django.views.decorators.csrf import csrf_protect
