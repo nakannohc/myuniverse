@@ -100,7 +100,7 @@ def text_search(lat, lng, radius,  query):
 
 def nearby_search(lat, lng, radius, name):
     url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
-    url = url + lat + ',' + lng + '&name=' + name.replace(' ', '') + '&radius=' + radius + '&key=' + key
+    url = url + lat + ',' + lng + '&name=' + urllib.quote(name) + '&radius=' + radius + '&key=' + key
     req = requests.get(url)
     res = json.loads(req.content)
     list = []
@@ -110,7 +110,7 @@ def nearby_search(lat, lng, radius, name):
         list += res['results']
         while 'next_page_token' in res:
             url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
-            url = url + lat + ',' + lng + '&name=' + name.replace(' ', '') + '&radius=' + radius + '&key=' + key + 'pagetoken=' + res['next_page_token']
+            url = url + lat + ',' + lng + '&name=' + urllib.quote(name) + '&radius=' + radius + '&key=' + key + 'pagetoken=' + res['next_page_token']
             req = requests.get(url)
             res = json.loads(req.content)
             if res['status'] == 'OK':
