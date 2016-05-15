@@ -96,10 +96,10 @@ class Command(BaseCommand):
                                 mnprob = nprob
                                 dest = p
 
-                    print '*'*100
+                    #print '*'*100
                     if dest is not None:
                         #print '%s - %s' % (dest['name'], place.name)
-                        print '%d: %s --- %s = %f' % (place.id, place.name, dest['name'], mnprob)
+                        #print '%d: %s --- %s = %f' % (place.id, place.name, dest['name'], mnprob)
                         place_detail, status, err_message = get_detail(dest['place_id'])
                         #print place_detail
                         if status == 'OK':
