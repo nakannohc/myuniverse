@@ -45,7 +45,7 @@ class Command(BaseCommand):
         while places.count() and not error > 0:
             for place in places:
                 #print g.keyword,
-                print place.lat, place.lng, place.name
+                #print place.lat, place.lng, place.name
                 pp, status, err_message = nearby_search(str(place.lat), str(place.lng), '3000', place.name)
                 #print status
                 #print pp
