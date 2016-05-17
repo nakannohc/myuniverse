@@ -51,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/places/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.8712446">
-              <caret line="281" column="84" selection-start-line="281" selection-start-column="84" selection-end-line="281" selection-end-column="84" />
+              <caret line="281" column="80" selection-start-line="281" selection-start-column="80" selection-end-line="281" selection-end-column="80" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -1070,7 +1070,7 @@
     <entry file="file://$PROJECT_DIR$/places/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8712446">
-          <caret line="281" column="84" selection-start-line="281" selection-start-column="84" selection-end-line="281" selection-end-column="84" />
+          <caret line="281" column="80" selection-start-line="281" selection-start-column="80" selection-end-line="281" selection-end-column="80" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>

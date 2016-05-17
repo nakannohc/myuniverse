@@ -279,7 +279,7 @@ def export_excel(request):
         row += 1
     kws = KeywordSummary.objects.get(keyword=name)
     response = HttpResponse()
-    response['Content-Disposition'] = 'attachment; filename=data_' + kws.id + '.xls'
+    response['Content-Disposition'] = 'attachment; filename=data_' + str(kws.id) + '.xls'
     wb.save(response)
     return response
 
