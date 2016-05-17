@@ -227,7 +227,7 @@ def list_place(name):
         places = Place.objects.filter(place_type='nearby_7eleven')
         dl_link = 'nb7eleven'
     else:
-        places = Place.objects.filter(grid__keyword=name)
+        places = Place.objects.filter(grid__keyword=name).order_by('id')
         dl_link = '/places/exportexcel/?name=' + name
     return places, dl_link
 
@@ -262,7 +262,7 @@ def export_excel(request):
         ws.write(row, 4, place.address)
         row += 1
     ws_log = wb.add_sheet("log")
-    grids = Grid.objects.filter(keyword=name)
+    grids = Grid.objects.filter(keyword=name).order_by('id')
 
     ws_log.write(0, 0, 'ID')
     ws_log.write(0, 1, 'zone')
