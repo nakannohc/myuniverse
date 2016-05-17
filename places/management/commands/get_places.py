@@ -36,7 +36,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         numrows = 10
-        grids = Grid.objects.filter(scanned=False, keyword=u'กองทุนหมู่บ้าน')[:numrows]
+        grids = Grid.objects.filter(scanned=False, keyword=u'กลุ่มสัจจะ')[:numrows]
         count_api = 0
         error = False
         self.send_email('Start Search Places - %s' % time.strftime("%c"))
@@ -123,5 +123,5 @@ class Command(BaseCommand):
                 g.scanned = True
                 kws.save()
                 g.save()
-            grids = Grid.objects.filter(scanned=False, keyword=u'กองทุนหมู่บ้าน')[:numrows]
+            grids = Grid.objects.filter(scanned=False, keyword=u'กลุ่มสัจจะ')[:numrows]
 
