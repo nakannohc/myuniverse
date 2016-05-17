@@ -50,8 +50,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/places/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65665233">
-              <caret line="280" column="81" selection-start-line="280" selection-start-column="81" selection-end-line="280" selection-end-column="81" />
+            <state vertical-scroll-proportion="0.07725322">
+              <caret line="280" column="94" selection-start-line="280" selection-start-column="94" selection-end-line="280" selection-end-column="94" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -1031,24 +1031,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/places/management/commands/repair_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/places/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="11" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/searchreport.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1067,10 +1049,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/places/management/commands/repair_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+          <folding>
+            <element signature="e#24#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/places/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="11" selection-start-line="38" selection-start-column="4" selection-end-line="38" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/places/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65665233">
-          <caret line="280" column="81" selection-start-line="280" selection-start-column="81" selection-end-line="280" selection-end-column="81" />
+        <state vertical-scroll-proportion="0.07725322">
+          <caret line="280" column="94" selection-start-line="280" selection-start-column="94" selection-end-line="280" selection-end-column="94" />
           <folding>
             <element signature="e#24#63#0" expanded="true" />
           </folding>

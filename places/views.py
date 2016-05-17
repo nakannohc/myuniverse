@@ -278,7 +278,7 @@ def export_excel(request):
         ws_log.write(row, 4, grid.count_place)
         row += 1
     response = HttpResponse()
-    response['Content-Disposition'] = 'attachment; filename=' + urllib.quote(name) + '.xls'
+    response['Content-Disposition'] = 'attachment; filename=' + urllib.quote(name.encode('utf8')) + '.xls'
     wb.save(response)
     return response
 
