@@ -63,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/templates/show_place.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.44444445">
-              <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
+              <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -1073,7 +1073,7 @@
     <entry file="file://$PROJECT_DIR$/templates/show_place.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.44444445">
-          <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
+          <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
           <folding />
         </state>
       </provider>
