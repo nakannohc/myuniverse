@@ -41,7 +41,7 @@ function addMarker(map) {
 
   for(var i=0;i<positions.length;i++)
   {
-      /*
+
       marker[i] = new google.maps.Circle({
 			strokeColor: '#FF0000',
       		strokeOpacity: 0.8,
@@ -51,13 +51,16 @@ function addMarker(map) {
       		map: map,
       		center: positions[i],
       		radius: 25,
-          label: 'a'
-      });*/
+            title: titles[i],
+      });
+      google.maps.event.addListener(marker[i],'mouseover',function(){
+             this.getMap().getDiv().setAttribute('title',this.get('title'));});
+      /*
       marker[i] = new google.maps.Marker({
         position: positions[i],
         map: map,
         title: titles[i]
-    });
+    });*/
   }
 }
 
