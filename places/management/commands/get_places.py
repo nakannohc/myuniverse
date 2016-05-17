@@ -35,8 +35,8 @@ class Command(BaseCommand):
             print "failed to send mail"
 
     def handle(self, *args, **options):
-        numrows = 5
-        grids = Grid.objects.filter(scanned=False)[:numrows]
+        numrows = 10
+        grids = Grid.objects.filter(scanned=False, keyword=u'กองทุนหมู่บ้าน')[:numrows]
         count_api = 0
         error = False
         self.send_email('Start Search Places - %s' % time.strftime("%c"))
@@ -123,5 +123,5 @@ class Command(BaseCommand):
                 g.scanned = True
                 kws.save()
                 g.save()
-            grids = Grid.objects.filter(scanned=False)[:numrows]
+            grids = Grid.objects.filter(scanned=False, keyword=u'กองทุนหมู่บ้าน')[:numrows]
 
