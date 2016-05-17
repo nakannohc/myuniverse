@@ -252,14 +252,16 @@ def export_excel(request):
     ws.write(0, 1, 'name')
     ws.write(0, 2, 'lat')
     ws.write(0, 3, 'lng')
-    ws.write(0, 4, 'address')
+    ws.write(0, 4, 'permanently closed')
+    ws.write(0, 5, 'address')
     row = 1
     for place in places:
         ws.write(row, 0, place.id)
         ws.write(row, 1, place.name)
         ws.write(row, 2, place.lat)
         ws.write(row, 3, place.lng)
-        ws.write(row, 4, place.address)
+        ws.write(row, 4, place.permanently_closed)
+        ws.write(row, 5, place.address)
         row += 1
     ws_log = wb.add_sheet("log")
     grids = Grid.objects.filter(keyword=name).order_by('id')
