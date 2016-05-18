@@ -99,4 +99,6 @@ class Command(BaseCommand):
                     g.scanned = True
                     kws.save()
                     g.save()
+                if error == True:
+                    break
                 grids = Grid.objects.filter(scanned=False, keyword=keyword)[:numrows]
