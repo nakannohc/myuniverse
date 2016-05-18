@@ -3,8 +3,8 @@ import time
 import smtplib
 import json
 from django.core.management.base import BaseCommand, CommandError
-from places.models import Place, Grid, KeywordSummary
-from places.views import get_detail, radar_search, text_search, nearby_search, keywords
+from places.models import Place, Grid, KeywordSummary, keywords
+from places.views import get_detail, radar_search, text_search, nearby_search
 
 
 
@@ -35,12 +35,12 @@ class Command(BaseCommand):
             print "failed to send mail"
 
     def handle(self, *args, **options):
+        self.send_email('Start Search Places - %s' % time.strftime("%c"))
         for keyword in keywords:
             numrows = 10
             grids = Grid.objects.filter(scanned=False, keyword=keyword)[:numrows]
             count_api = 0
             error = False
-            self.send_email('Start Search Places - %s' % time.strftime("%c"))
             while grids.count() and not error > 0:
                 for g in grids:
                     #print g.keyword,

@@ -23,7 +23,7 @@ keywords = [u'ธนาคาร',  u'ATM',  u'CDM',  u'บริษัทเง
             u'max valu',  u'max value',  u'108 shop',  u'cp freshmart',  u'บิ๊กซี',  u'เทสโก้',
             u'makro',  u'ห้างสรรพสินค้า',  u'ศูนย์การค้า',  u'ไปรษณีย์',  u'AIS',  u'telewiz',  u'เทเลวิซ',
             u'ทรูช็อป',  u'Dtac',  u'ดีแทค',  u'ศูนย์บริการ ทีโอที',  u'ศูนย์บริการ TOT',  u'เจมาร์ท',
-            u'ปั๊มน้ำมัน',  u'ตู้เติมเงิน']
+            u'ปั๊มน้ำมัน',  u'ตู้เติมเงิน', u'ลอว์สัน', u'Lawson', u'CJ express']
 
 class Grid(models.Model):
     def __unicode__(self):

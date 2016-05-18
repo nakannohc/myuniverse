@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand, CommandError
-from places.models import Place, Grid
+from places.models import Place, Grid, keywords
 from places.views import get_detail, radar_search, put_mark
 import xlrd
 
@@ -9,6 +9,8 @@ class Command(BaseCommand):
     help = 'Gen grids'
 
     def handle(self, *args, **options):
+        '''
+        # not use now
         wb = xlrd.open_workbook('keywords.xlsx')
         ws = wb.sheet_by_index(0)
 
@@ -43,3 +45,5 @@ class Command(BaseCommand):
             put_mark(7.56, 99.001, 54, 33, 'south 4', place_type, keyword)
             put_mark(6.438, 100.778, 26, 26, 'south 5', place_type, keyword)
             #print count
+        '''
+        
