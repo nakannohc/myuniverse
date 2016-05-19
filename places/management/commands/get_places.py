@@ -36,11 +36,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         self.send_email('Start Search Places - %s' % time.strftime("%c"))
+        error = False
+        numrows = 10
+        count_api = 0
         for keyword in keywords:
-            numrows = 10
             grids = Grid.objects.filter(scanned=False, keyword=keyword)[:numrows]
-            count_api = 0
-            error = False
             while grids.count() and not error > 0:
                 for g in grids:
                     #print g.keyword,
@@ -99,6 +99,6 @@ class Command(BaseCommand):
                     g.scanned = True
                     kws.save()
                     g.save()
-                if error == True:
-                    break
                 grids = Grid.objects.filter(scanned=False, keyword=keyword)[:numrows]
+            if error:
+                    break
