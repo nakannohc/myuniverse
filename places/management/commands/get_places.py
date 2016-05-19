@@ -16,7 +16,7 @@ class Command(BaseCommand):
         gmail_pwd = 'qTut0L2$'
         FROM = 'nakannohc@gmail.com'
         TO = 'chonnakan.r@gmail.com'
-        SUBJECT = 'error - server %s' % time.strftime("%c")
+        SUBJECT = 'Message from GIS server %s' % time.strftime("%c")
         TEXT = message
 
         # Prepare actual message
