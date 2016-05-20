@@ -23,6 +23,7 @@
         <th>Complete grids</th>
         <th>Total grids</th>
         <th>Report download</th>
+        <th>Show Map</th>
     </tr>
 </thead>
 <tbody>
@@ -40,6 +41,7 @@
         <td id="{{ forloop.counter0 }}-com">{{ k.complete }}</td>
         <td id="{{ forloop.counter0 }}-total">{{ k.total}}</td>
         <td><a href="{{ k.link }}">Download</a></td>
+        <td><a href="/places/showplace?name={{ k.keyword }}" target="_blank">Show maps</a></td>
     </tr>
     {% endfor %}
 </tbody>
