@@ -42,7 +42,7 @@ class Command(BaseCommand):
         for keyword in keywords:
             grids = Grid.objects.filter(scanned=False, keyword=keyword)[:numrows]
             #print grids.count()
-            print keyword
+            #print keyword
             while grids.count() and not error > 0:
                 for g in grids:
                     #print g.keyword,
@@ -91,9 +91,10 @@ class Command(BaseCommand):
                                 else:
                                     p.permanently_closed = False
                                 p.save()
+                    if status == 'OK' or status =='ZERO_RESULTS':
                         kws = KeywordSummary.objects.get(keyword=g.keyword)
                         kws.grid_complete += 1
-                        print kws.grid_complete
+                        #print kws.grid_complete
                         g.scanned = True
                         kws.save()
                         g.save()
