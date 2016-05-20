@@ -93,6 +93,7 @@ class Command(BaseCommand):
                                 p.save()
                         kws = KeywordSummary.objects.get(keyword=g.keyword)
                         kws.grid_complete += 1
+                        print kws.grid_complete
                         g.scanned = True
                         kws.save()
                         g.save()
