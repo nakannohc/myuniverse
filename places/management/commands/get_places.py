@@ -41,6 +41,8 @@ class Command(BaseCommand):
         count_api = 0
         for keyword in keywords:
             grids = Grid.objects.filter(scanned=False, keyword=keyword)[:numrows]
+            #print grids.count()
+            #print keyword
             while grids.count() and not error > 0:
                 for g in grids:
                     #print g.keyword,
