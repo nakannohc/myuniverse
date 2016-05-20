@@ -54,13 +54,13 @@ class Command(BaseCommand):
                     elif status == 'REQUEST_DENIED':
                         print '%s - REQUEST_DENIED - %s' % (time.strftime("%c"), err_message)
                         self.send_email('REQUEST_DENIED')
-                        error = True
-                        break
+                        #error = True
+                        #break
                     elif status == 'INVALID_REQUEST':
                         print '%s - INVALID_REQUEST- %s' % (time.strftime("%c"), err_message)
                         self.send_email('INVALID_REQUEST')
-                        error = True
-                        break
+                        #error = True
+                        #break
                     elif status == 'ZERO_RESULTS':
                         #print '%s - ZERO' % time.strftime("%c")
                         places = []
@@ -89,16 +89,16 @@ class Command(BaseCommand):
                                 else:
                                     p.permanently_closed = False
                                 p.save()
+                        kws = KeywordSummary.objects.get(keyword=g.keyword)
+                        kws.grid_complete += 1
+                        g.scanned = True
+                        kws.save()
+                        g.save()
                     else:
                         print status + ' - ' + time.strftime("%c") + ' - ' + err_message
                         self.send_email(status)
-                        error = True
-                        break
-                    kws = KeywordSummary.objects.get(keyword=g.keyword)
-                    kws.grid_complete += 1
-                    g.scanned = True
-                    kws.save()
-                    g.save()
+                        #error = True
+                        #break
                 grids = Grid.objects.filter(scanned=False, keyword=keyword)[:numrows]
             if error:
                     break
