@@ -91,6 +91,12 @@ class Command(BaseCommand):
                                 else:
                                     p.permanently_closed = False
                                 p.save()
+                    else:
+                        print status + ' - ' + time.strftime("%c") + ' - ' + err_message
+                        self.send_email(status)
+                        #error = True
+                        #break
+
                     if status == 'OK' or status =='ZERO_RESULTS':
                         kws = KeywordSummary.objects.get(keyword=g.keyword)
                         kws.grid_complete += 1
@@ -98,11 +104,6 @@ class Command(BaseCommand):
                         g.scanned = True
                         kws.save()
                         g.save()
-                    else:
-                        print status + ' - ' + time.strftime("%c") + ' - ' + err_message
-                        self.send_email(status)
-                        #error = True
-                        #break
                 grids = Grid.objects.filter(scanned=False, keyword=keyword)[:numrows]
             if error:
                     break
