@@ -9,10 +9,10 @@ class Command(BaseCommand):
     help = 'Gen grids'
 
     def handle(self, *args, **options):
-        '''
+
         # not use now
         wb = xlrd.open_workbook('keywords.xlsx')
-        ws = wb.sheet_by_index(0)
+        ws = wb.sheet_by_index(1)
 
         for i in range(0, ws.nrows):
             kw = ws.cell_value(i, 0)
@@ -26,6 +26,7 @@ class Command(BaseCommand):
         for i in range(0, ws.nrows):
             kw = ws.cell_value(i, 0)
             pt = ws.cell_value(i, 1)
+            print kw, pt
 
             place_type = pt
             keyword = kw
@@ -45,5 +46,5 @@ class Command(BaseCommand):
             put_mark(7.56, 99.001, 54, 33, 'south 4', place_type, keyword)
             put_mark(6.438, 100.778, 26, 26, 'south 5', place_type, keyword)
             #print count
-        '''
+
         

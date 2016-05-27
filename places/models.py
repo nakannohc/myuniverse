@@ -27,7 +27,7 @@ keywords = [u'ธนาคาร',  u'ATM',  u'CDM',  u'บริษัทเง
 
 class Grid(models.Model):
     def __unicode__(self):
-        return self.name
+        return self.name + '::' + self.keyword
 
     name = models.CharField(max_length=250)
     place_type = models.CharField(max_length=50)
