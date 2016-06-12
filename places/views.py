@@ -4,6 +4,7 @@ import requests
 import json
 import xlwt
 import urllib
+import time
 from django.db.models import Q
 from django.shortcuts import render, render_to_response
 from django.views.decorators.csrf import csrf_protect
@@ -108,14 +109,31 @@ def nearby_search(lat, lng, radius, name):
     #print url
     err_message = ''
     if res['status'] == 'OK':
-        list += res['results']
+        #print url
+        for p in res['results']:
+            list.append(p)
+        #time.sleep(2)
         while 'next_page_token' in res:
+            page_token = res['next_page_token']
             url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
-            url = url + lat + ',' + lng + '&name=' + urllib.quote(name.encode('utf8')) + '&radius=' + radius + '&key=' + key + 'pagetoken=' + res['next_page_token']
+            url = url + lat + ',' + lng + '&name=' + urllib.quote(name.encode('utf8')) + '&radius=' + radius + '&key=' + key + '&pagetoken=' + page_token
+            #print url
             req = requests.get(url)
             res = json.loads(req.content)
             if res['status'] == 'OK':
-                list += res['results']
+                for p in res['results']:
+                    list.append(p)
+            else:
+                while res['status'] != 'OK':
+                    url = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='
+                    url = url + lat + ',' + lng + '&name=' + urllib.quote(name.encode('utf8')) + '&radius=' + radius + '&key=' + key + '&pagetoken=' + page_token
+                    #print url
+                    req = requests.get(url)
+                    res = json.loads(req.content)
+                    if res['status'] == 'OK':
+                        for p in res['results']:
+                            list.append(p)
+            #time.sleep(2)
         return list, 'OK', err_message
     elif res['status'] == 'ZERO_RESULTS':
         if 'error_message' in res:
