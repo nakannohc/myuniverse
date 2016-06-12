@@ -67,7 +67,6 @@ class Command(BaseCommand):
                         #print '%s - ZERO' % time.strftime("%c")
                         places = []
                     elif status == 'OK':
-                        count_api += 1
                         g.count_place = len(places)
                         #print places
                         #print len(places)
