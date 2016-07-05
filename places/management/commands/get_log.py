@@ -16,10 +16,10 @@ class Command(BaseCommand):
             grids = Grid.objects.filter(keyword=keyword).order_by('zone', 'x', 'y')
             if first_col:
                 row = 0
-                ws.write(row, col, 'Grid %f, %f' %(grid.lat, grid.lng))
+                ws.write(row, col, 'Grid')
                 row += 1
                 for grid in grids:
-                    ws.write(row, col, grid.zone)
+                    ws.write(row, col, '%s (%f, %f)' %(grid.zone, grid.lat, grid.lng))
                     row += 1
                 col += 1
                 first_col = False
