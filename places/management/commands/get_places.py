@@ -47,6 +47,7 @@ class Command(BaseCommand):
                 for g in grids:
                     #print g.keyword,
                     places, status, err_message = nearby_search(str(g.lat), str(g.lng), '3000', g.keyword)
+                    time.sleep(1)
                     #print status
                     if status == 'OVER_QUERY_LIMIT':
                         print '%s - OVER_QUERY_LIMIT - %s' % (time.strftime("%c"), err_message)
