@@ -97,6 +97,7 @@ class Command(BaseCommand):
                         #break
 
                     if status == 'OK' or status =='ZERO_RESULTS':
+                        print g.keyword
                         kws = KeywordSummary.objects.get(keyword=g.keyword)
                         kws.grid_complete += 1
                         #print kws.grid_complete
