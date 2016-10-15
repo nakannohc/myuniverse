@@ -11,6 +11,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
         # not use now
+        print 'Start Grid gen'
         wb = xlrd.open_workbook('keywords.xlsx')
         ws = wb.sheet_by_index(1)
 
