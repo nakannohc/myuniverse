@@ -13,11 +13,11 @@ class Command(BaseCommand):
         # not use now
         print 'Start Grid gen'
         wb = xlrd.open_workbook('keywords.xlsx')
-        ws = wb.sheet_by_index()
+        ws = wb.sheet_by_index(2)
 
         for i in range(0, ws.nrows):
             kw = ws.cell_value(i, 0)
-            pt = ws.cell_value(i, 2)
+            pt = ws.cell_value(i, 1)
 
             place_type = pt
             keyword = kw

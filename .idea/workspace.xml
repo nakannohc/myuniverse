@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a40192c1-9af0-460c-82d0-a994a9853ffa" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/keywords_old.xlsx" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/keywords.xlsx" afterPath="$PROJECT_DIR$/keywords.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/places/management/commands/gen_grid.py" afterPath="$PROJECT_DIR$/places/management/commands/gen_grid.py" />
     </list>
     <ignored path="myuniverse.iws" />
@@ -110,8 +108,8 @@
       <file leaf-file-name="gen_grid.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/places/management/commands/gen_grid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+            <state relative-caret-position="225">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
               <folding>
                 <element signature="e#24#89#0" expanded="true" />
               </folding>
@@ -962,8 +960,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/places/management/commands/gen_grid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+        <state relative-caret-position="225">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding>
             <element signature="e#24#89#0" expanded="true" />
           </folding>
