@@ -35,7 +35,7 @@ class Command(BaseCommand):
             print "failed to send mail"
 
     def handle(self, *args, **options):
-        self.send_email('Start Search Places - %s' % time.strftime("%c"))
+        #self.send_email('Start Search Places - %s' % time.strftime("%c"))
         error = False
         numrows = 10
         count_api = 0
