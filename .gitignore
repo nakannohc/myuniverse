@@ -1,3 +1,4 @@
 static/
 *.pyc
 myuniverse/settings.py
+*.out
