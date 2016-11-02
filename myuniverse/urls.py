@@ -19,9 +19,9 @@ from . import views
 
 urlpatterns = [
     #url(r'^$', views.home, name='homepage'),
-    url(r'^/d/admin/', admin.site.urls),
-    url(r'^/d/places/', include('places.urls')),
-    url(r'^/d/', include('puput.urls')),
+    url(r'^d/admin/', admin.site.urls),
+    url(r'^d/places/', include('places.urls')),
+    url(r'^d/', include('puput.urls')),
 
 ]
 
