@@ -26,6 +26,7 @@ keywords = [u'ธนาคาร',  u'ATM',  u'CDM',  u'บริษัทเง
             u'ทรูช็อป',  u'Dtac',  u'ดีแทค',  u'ศูนย์บริการ ทีโอที',  u'ศูนย์บริการ TOT',  u'เจมาร์ท',
             u'ปั๊มน้ำมัน',  u'ตู้เติมเงิน', u'โรงรับจำนำ', u'สถานธนานุเคราะห์']
 
+
 class Grid(models.Model):
     def __unicode__(self):
         return self.name + '::' + self.keyword

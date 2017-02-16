@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'myuniverse',
     'places',
     'disaster',
+    'pantip'
 ]
 
 MIDDLEWARE_CLASSES = [
