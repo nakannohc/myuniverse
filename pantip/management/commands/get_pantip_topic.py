@@ -29,18 +29,18 @@ class Command(BaseCommand):
             # print r.content
             soup = BeautifulSoup(r.content, "lxml")
             links = soup.find_all('a')
+            next = None
+
             for link in links:
                 # print link['href']
                 if u'ถัดไป' in link.text:
                     next = link['href']
-                else:
-                    next = None
 
                 if u'sr' in link['href']:
                     # print link['href']
                     r2 = requests.get(self.pantip_url + link['href'])
                     tid = int(r2.url.split('/')[4])
-                    print tid,
+                    print tid
                     try:
                         mt = MarkTopic.objects.get(p_tid=tid)
                     except MarkTopic.DoesNotExist:
