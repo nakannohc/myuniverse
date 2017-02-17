@@ -20,7 +20,7 @@ class Command(BaseCommand):
     help = 'Get Topic ID From Keyword'
 
     def handle(self, *args, **options):
-        keyword = u'คอรัปชัน'
+        keyword = u'คอรัปชั่น'
         room = u'ราชดำเนิน'
         self.set_params(keyword, room)
         s_url = self.pantip_url+'/ss/'
