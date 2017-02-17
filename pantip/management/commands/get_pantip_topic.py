@@ -24,12 +24,13 @@ class Command(BaseCommand):
         room = u'ราชดำเนิน'
         self.set_params(keyword, room)
         s_url = self.pantip_url+'/ss/'
+        next = None
+
         while True:
             r = requests.get(s_url , params=self.params, headers=self.headers)
             # print r.content
             soup = BeautifulSoup(r.content, "lxml")
             links = soup.find_all('a')
-            next = None
 
             for link in links:
                 # print link['href']
@@ -49,8 +50,9 @@ class Command(BaseCommand):
                     if mt is None:
                         mt = MarkTopic(p_tid=tid)
                         mt.save()
-            s_url = self.pantip_url + next
-            print s_url,
 
             if next is None:
                 break
+            else:
+                s_url = self.pantip_url + next
+                print s_url,
