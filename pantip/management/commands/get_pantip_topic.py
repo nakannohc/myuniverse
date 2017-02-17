@@ -34,9 +34,6 @@ class Command(BaseCommand):
 
             for link in links:
                 # print link['href']
-                if u'ถัดไป' in link.text:
-                    next = link['href']
-
                 if u'sr' in link['href']:
                     # print link['href']
                     r2 = requests.get(self.pantip_url + link['href'])
@@ -50,9 +47,13 @@ class Command(BaseCommand):
                     if mt is None:
                         mt = MarkTopic(p_tid=tid)
                         mt.save()
+                if u'ถัดไป' in link.text:
+                    next = link['href']
+                    s_url = self.pantip_url + next
+                    print s_url,
+                else:
+                    next = None
 
             if next is None:
                 break
-            else:
-                s_url = self.pantip_url + next
-                print s_url,
+
