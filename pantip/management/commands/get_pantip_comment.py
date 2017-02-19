@@ -103,5 +103,6 @@ class Command(BaseCommand):
                     tp.save()
                     unread.read = True
                     unread.save()
-            except Exception:
-                self.send_email('%d error pantip\n\r%s'% (unread.p_tid, Exception.message))
+            except:
+                pass
+                # self.send_email('%d error pantip\n\r%s'% (unread.p_tid, Exception.message))
