@@ -85,6 +85,7 @@ class Command(BaseCommand):
                         page += 1
                     else:
                         break
+                    time.sleep(1)
                 # print comments
                 p = pickle.dumps(comments)
                 tp = Topic(p_tid=unread.p_tid,
