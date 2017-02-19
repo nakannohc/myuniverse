@@ -74,11 +74,15 @@ class Command(BaseCommand):
                     r = requests.get(url, params=params, headers=headers)
                     # print r.url
                     data = json.loads(r.text)
+                    # print data
                     # print json.dumps(data)
-                    total_comments = data['count']
-                    count_comment += len(data['comments'])
-                    comments.append(json.dumps(data))
-                    page += 1
+                    if 'count' in data:
+                        total_comments = data['count']
+                        count_comment += len(data['comments'])
+                        comments.append(json.dumps(data))
+                        page += 1
+                    else:
+                        break
                 # print comments
                 p = pickle.dumps(comments)
                 tp = Topic(p_tid=unread.p_tid,
