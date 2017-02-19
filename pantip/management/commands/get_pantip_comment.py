@@ -44,7 +44,7 @@ class Command(BaseCommand):
                 r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
                 print r.status_code
                 while r.status_code != 200:
-                    time.sleep(2)
+                    time.sleep(10)
                     r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
                     print r.status_code
                 s = bs4.BeautifulSoup(r.content, "lxml")
@@ -92,7 +92,7 @@ class Command(BaseCommand):
                         page += 1
                     else:
                         break
-                    time.sleep(2)
+                    time.sleep(10)
                 # print comments
                 p = pickle.dumps(comments)
                 tp = Topic(p_tid=unread.p_tid,
