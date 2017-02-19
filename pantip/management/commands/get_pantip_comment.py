@@ -41,6 +41,7 @@ class Command(BaseCommand):
                 print unread.p_tid
                 headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0"}
                 r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
+                time.sleep(5)
                 s = bs4.BeautifulSoup(r.content, "lxml")
                 topic = s.find('h2', {'class': 'display-post-title'})
                 topic = topic.get_text()
