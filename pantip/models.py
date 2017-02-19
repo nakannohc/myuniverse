@@ -1,15 +1,17 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.db import models
 
 
 class Topic(models.Model):
     def __unicode__(self):
-        return self.p_tid + '::' + self.p_name
+        return '%d :: %s' % (self.p_tid, self.p_name)
 
     p_tid = models.IntegerField()
     p_name = models.TextField()
     p_content = models.TextField()
     p_comments = models.TextField()
+    p_datetime = models.DateTimeField()
 
 
 class MarkTopic(models.Model):

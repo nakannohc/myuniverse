@@ -2,3 +2,5 @@ static/
 *.pyc
 myuniverse/settings.py
 *.out
+*.json
+*.DS_Store
