@@ -1,6 +1,6 @@
 static/
 *.pyc
-myuniverse/settings.py
+myuniverse/local_settings.py
 *.out
 *.json
 *.DS_Store
