@@ -42,8 +42,10 @@ class Command(BaseCommand):
                 headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0"}
                 r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
                 s = bs4.BeautifulSoup(r.content, "lxml")
-                topic = s.find('h2', {'class': 'display-post-title'}).get_text()
-                content = s.find('div', {'class': 'display-post-story'}).get_text()
+                topic = s.find('h2', {'class': 'display-post-title'})
+                topic = topic.get_text()
+                content = s.find('div', {'class': 'display-post-story'})
+                content = content.get_text()
                 dt = s.find('abbr', {'class': 'timeago'})
                 d = dt['data-utime'].split(' ')[0]
                 t = dt['data-utime'].split(' ')[1]
