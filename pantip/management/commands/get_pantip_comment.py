@@ -42,7 +42,6 @@ class Command(BaseCommand):
                 headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0"}
                 r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
                 print r.status_code
-
                 s = bs4.BeautifulSoup(r.content, "lxml")
                 # print s
                 topic = s.find('h2', {'class': 'display-post-title'})
@@ -99,6 +98,7 @@ class Command(BaseCommand):
                 tp.save()
                 unread.read = True
                 unread.save()
+                time.sleep(10)
 
 
 
