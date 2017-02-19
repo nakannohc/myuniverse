@@ -44,7 +44,7 @@ class Command(BaseCommand):
                 print r.status_code
 
                 s = bs4.BeautifulSoup(r.content, "lxml")
-                print s
+                # print s
                 topic = s.find('h2', {'class': 'display-post-title'})
                 topic = topic.get_text()
                 content = s.find('div', {'class': 'display-post-story'})
