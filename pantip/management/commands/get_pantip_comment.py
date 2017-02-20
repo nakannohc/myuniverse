@@ -47,60 +47,63 @@ class Command(BaseCommand):
                         time.sleep(10)
                         r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
                         print r.status_code
-                    s = bs4.BeautifulSoup(r.content, "lxml")
-                    # print s
-                    topic = s.find('h2', {'class': 'display-post-title'})
-                    topic = topic.get_text()
-                    content = s.find('div', {'class': 'display-post-story'})
-                    content = content.get_text()
-                    dt = s.find('abbr', {'class': 'timeago'})
-                    d = dt['data-utime'].split(' ')[0]
-                    t = dt['data-utime'].split(' ')[1]
-                    dt = datetime.datetime(int(d.split('/')[2]),
-                                           int(d.split('/')[0]),
-                                           int(d.split('/')[1]),
-                                           int(t.split(':')[0]),
-                                           int(t.split(':')[1]),
-                                           int(t.split(':')[2]),
-                                           tzinfo=pytz.utc
-                                           )
-                    total_comments = 0
-                    count_comment = -1
-                    page = 1
-                    comments = []
-                    headers["X-Requested-With"] = "XMLHttpRequest"
-                    params = {"tid": unread.p_tid,
-                              "param": "page1",
-                              "type": "1",
-                              "page": "1",
-                              "_": str(int(time.time()))
-                              }
-                    while count_comment < total_comments:
-                        if count_comment == -1:
-                            count_comment = 0
-                        params["param"] = "page" + str(page)
-                        params["page"] = str(page)
-                        r = requests.get(url, params=params, headers=headers)
-                        # print r.url
-                        data = json.loads(r.text)
-                        # print data
-                        # print json.dumps(data)
-                        if 'count' in data:
-                            total_comments = data['count']
-                            count_comment += len(data['comments'])
-                            comments.append(json.dumps(data))
-                            page += 1
-                        else:
-                            break
-                        time.sleep(10)
-                    # print comments
-                    p = pickle.dumps(comments)
-                    tp = Topic(p_tid=unread.p_tid,
-                              p_name=topic,
-                              p_content=content,
-                              p_comments=p,
-                              p_datetime=dt)
-                    tp.save()
+
+                    if not u'กระทู้นี้ถูกลบ' in r.content:
+                        s = bs4.BeautifulSoup(r.content, "lxml")
+
+                        # print s
+                        topic = s.find('h2', {'class': 'display-post-title'})
+                        topic = topic.get_text()
+                        content = s.find('div', {'class': 'display-post-story'})
+                        content = content.get_text()
+                        dt = s.find('abbr', {'class': 'timeago'})
+                        d = dt['data-utime'].split(' ')[0]
+                        t = dt['data-utime'].split(' ')[1]
+                        dt = datetime.datetime(int(d.split('/')[2]),
+                                               int(d.split('/')[0]),
+                                               int(d.split('/')[1]),
+                                               int(t.split(':')[0]),
+                                               int(t.split(':')[1]),
+                                               int(t.split(':')[2]),
+                                               tzinfo=pytz.utc
+                                               )
+                        total_comments = 0
+                        count_comment = -1
+                        page = 1
+                        comments = []
+                        headers["X-Requested-With"] = "XMLHttpRequest"
+                        params = {"tid": unread.p_tid,
+                                  "param": "page1",
+                                  "type": "1",
+                                  "page": "1",
+                                  "_": str(int(time.time()))
+                                  }
+                        while count_comment < total_comments:
+                            if count_comment == -1:
+                                count_comment = 0
+                            params["param"] = "page" + str(page)
+                            params["page"] = str(page)
+                            r = requests.get(url, params=params, headers=headers)
+                            # print r.url
+                            data = json.loads(r.text)
+                            # print data
+                            # print json.dumps(data)
+                            if 'count' in data:
+                                total_comments = data['count']
+                                count_comment += len(data['comments'])
+                                comments.append(json.dumps(data))
+                                page += 1
+                            else:
+                                break
+                            time.sleep(10)
+                        # print comments
+                        p = pickle.dumps(comments)
+                        tp = Topic(p_tid=unread.p_tid,
+                                  p_name=topic,
+                                  p_content=content,
+                                  p_comments=p,
+                                  p_datetime=dt)
+                        tp.save()
                     unread.read = True
                     unread.save()
             except:
