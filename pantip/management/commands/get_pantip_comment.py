@@ -48,9 +48,8 @@ class Command(BaseCommand):
                         r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
                         print r.status_code
 
-                    if not u'กระทู้นี้ถูกลบ' in r.content:
+                    if not u'กระทู้นี้ถูกลบโดยระบบอัตโนมัติทั้งนี้เพื่อเป็นการรักษาบรรยากาศการสนทนา' in r.content.decode('utf-8'):
                         s = bs4.BeautifulSoup(r.content, "lxml")
-
                         # print s
                         topic = s.find('h2', {'class': 'display-post-title'})
                         topic = topic.get_text()
@@ -107,5 +106,5 @@ class Command(BaseCommand):
                     unread.read = True
                     unread.save()
             except:
-                pass
+                raise
                 # self.send_email('%d error pantip\n\r%s'% (unread.p_tid, Exception.message))
