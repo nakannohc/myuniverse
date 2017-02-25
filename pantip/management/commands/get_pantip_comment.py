@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import time, smtplib, requests, json, pickle, bs4, datetime, pytz
 from django.core.management.base import BaseCommand, CommandError
-from pantip.models import MarkTopic, Topic
+from pantip.models import MarkTopic, Topic, TopicKeyword
 
 class Command(BaseCommand):
     help = 'Get Comment From Topic'
@@ -40,7 +40,7 @@ class Command(BaseCommand):
             try:
                 for unread in unreads:
                     print unread.p_tid
-                    headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0"}
+                    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"}
                     r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
                     print r.status_code
                     while r.status_code != 200:
@@ -97,11 +97,13 @@ class Command(BaseCommand):
                             time.sleep(10)
                         # print comments
                         p = pickle.dumps(comments)
+                        tc = TopicKeyword.objects.get(p_tid=unread.p_tid)
                         tp = Topic(p_tid=unread.p_tid,
                                   p_name=topic,
                                   p_content=content,
                                   p_comments=p,
-                                  p_datetime=dt)
+                                  p_datetime=dt,
+                                  p_keyword=tc)
                         tp.save()
                     unread.read = True
                     unread.save()
