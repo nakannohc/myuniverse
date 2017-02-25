@@ -12,7 +12,7 @@ class Command(BaseCommand):
         self.params = {"ac": 0,
                   "q": keyword,
                   "r": room,
-                  "s": "a",
+                  "s": "t",
                   "nms": "+Smart+Search+"}
         self.headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/53.0",
                    "X-Requested-With": "XMLHttpRequest"}
