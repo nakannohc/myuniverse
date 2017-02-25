@@ -41,14 +41,17 @@ class Command(BaseCommand):
                 for unread in unreads:
                     print unread.p_tid
                     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"}
-                    r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
-                    print r.status_code
+                    r = requests.get('https://pantip.com/topic/' + str(unread.p_tid), headers=headers)
+                    #print r.content
+                    # print r.request.headers
+
                     while r.status_code != 200:
-                        time.sleep(10)
+                        #time.sleep(10)
                         r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
                         print r.status_code
 
                     if not u'กระทู้นี้ถูกลบโดยระบบอัตโนมัติทั้งนี้เพื่อเป็นการรักษาบรรยากาศการสนทนา' in r.content.decode('utf-8'):
+                    #if True:
                         s = bs4.BeautifulSoup(r.content, "lxml")
                         # print s
                         topic = s.find('h2', {'class': 'display-post-title'})
@@ -84,6 +87,7 @@ class Command(BaseCommand):
                             params["page"] = str(page)
                             r = requests.get(url, params=params, headers=headers)
                             # print r.url
+                            #print r.content
                             data = json.loads(r.text)
                             # print data
                             # print json.dumps(data)
@@ -94,8 +98,8 @@ class Command(BaseCommand):
                                 page += 1
                             else:
                                 break
-                            time.sleep(10)
-                        # print comments
+                            #time.sleep(10)
+                        #print comments
                         p = pickle.dumps(comments)
                         tc = TopicKeyword.objects.get(p_tid=unread.p_tid)
                         tp = Topic(p_tid=unread.p_tid,
@@ -108,5 +112,5 @@ class Command(BaseCommand):
                     unread.read = True
                     unread.save()
             except:
-                pass
+                raise
                 # self.send_email('%d error pantip\n\r%s'% (unread.p_tid, Exception.message))
