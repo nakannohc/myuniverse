@@ -2,7 +2,7 @@
 import time, smtplib, requests, random
 from bs4 import BeautifulSoup
 from django.core.management.base import BaseCommand, CommandError
-from pantip.models import MarkTopic, Topic
+from pantip.models import MarkTopic, Topic, TopicKeyword
 
 class Command(BaseCommand):
     def __init__(self):
@@ -20,8 +20,9 @@ class Command(BaseCommand):
     help = 'Get Topic ID From Keyword'
 
     def handle(self, *args, **options):
-        keywords = [u'โกง', u'โกงกิน', u'คอรัปชัน', u'คอรัปชั่น', u'corruption']
+        keywords = [u'สินบน', u'งบประมาณ']
         for keyword in keywords:
+            tkw = TopicKeyword.objects.get(keyword=keyword)
             room = u'ราชดำเนิน'
             self.set_params(keyword, room)
             s_url = self.pantip_url+'/ss/'
@@ -41,12 +42,12 @@ class Command(BaseCommand):
                         tid = int(r2.url.split('/')[4])
                         print tid
                         try:
-                            mt = MarkTopic.objects.get(p_tid=tid)
+                            mt = MarkTopic.objects.get(p_tid=tid, p_keyword=tkw)
                         except MarkTopic.DoesNotExist:
                             mt = None
 
                         if mt is None:
-                            mt = MarkTopic(p_tid=tid)
+                            mt = MarkTopic(p_tid=tid, p_keyword=tkw)
                             mt.save()
                     if u'ถัดไป' in link.text:
                         next = link['href']
