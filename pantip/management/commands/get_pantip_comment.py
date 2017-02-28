@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import time, smtplib, requests, json, pickle, bs4, datetime, pytz
+import time, smtplib, requests, json, pickle, bs4, datetime, pytz, logging
 from django.core.management.base import BaseCommand, CommandError
 from pantip.models import MarkTopic, Topic, TopicKeyword
 
@@ -30,8 +30,10 @@ class Command(BaseCommand):
             print "failed to send mail"
 
     def handle(self, *args, **options):
+        LOG_FILENAME = 'myuniverse.log'
+        logging.basicConfig(filename=LOG_FILENAME, level=logging.INFO)
         url = 'https://pantip.com/forum/topic/render_comments/'
-        limit_row = 5
+        limit_row = 10
         # self.send_email("start get topic content")
 
         unreads = MarkTopic.objects.filter(read=False)[0:limit_row]
@@ -39,14 +41,15 @@ class Command(BaseCommand):
             unreads = MarkTopic.objects.filter(read=False)[0:limit_row]
             try:
                 for unread in unreads:
-                    print unread.p_tid
+                    logging.info('%s' % unread.p_tid)
+                    # print unread.p_tid
                     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"}
                     r = requests.get('https://pantip.com/topic/' + str(unread.p_tid), headers=headers)
                     #print r.content
                     # print r.request.headers
 
                     while r.status_code != 200:
-                        #time.sleep(10)
+                        time.sleep(2)
                         r = requests.get('https://pantip.com/topic/' + str(unread.p_tid))
                         print r.status_code
 
@@ -98,19 +101,20 @@ class Command(BaseCommand):
                                 page += 1
                             else:
                                 break
-                            #time.sleep(10)
+                            time.sleep(2)
                         #print comments
                         p = pickle.dumps(comments)
-                        tc = TopicKeyword.objects.get(p_tid=unread.p_tid)
+                        tc = TopicKeyword.objects.get(keyword=unread.p_keyword.keyword)
                         tp = Topic(p_tid=unread.p_tid,
-                                  p_name=topic,
-                                  p_content=content,
-                                  p_comments=p,
-                                  p_datetime=dt,
-                                  p_keyword=tc)
+                                   p_name=topic,
+                                   p_content=content,
+                                   p_comments=p,
+                                   p_datetime=dt,
+                                   p_keyword=tc)
                         tp.save()
                     unread.read = True
                     unread.save()
             except:
-                raise
+                logging.info('Error :: %s' % unread.p_tid)
+                pass
                 # self.send_email('%d error pantip\n\r%s'% (unread.p_tid, Exception.message))
