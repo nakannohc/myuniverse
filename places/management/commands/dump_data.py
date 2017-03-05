@@ -21,6 +21,5 @@ class Command(BaseCommand):
             for n in new_data:
                 n.save(using='default')
 
-
     def handle(self, *args, **options):
         self.migrate()
